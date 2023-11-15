@@ -5,6 +5,7 @@
 
 .list-group-item:hover {
     background-color: #f18e18;
+    scale: 1.1;
 }
 
 .list-group-item:hover a{
@@ -45,4 +46,12 @@
     border-top: 2px solid rgba(0, 0, 0, 0.228);
     padding: 20px;
     background-color: #111041;
+}
+
+.logo-text img{
+    border-radius: 0.6em ;
+}
+
+.logo-text img:hover{
+    scale: 1.2;
 }

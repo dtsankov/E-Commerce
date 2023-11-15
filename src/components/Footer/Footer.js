@@ -16,7 +16,7 @@ import logo from '../../resources/images/logo.png'
         <Col lg="5">
           <div className='logo'>
             <div className='logo-text'>
-            <Link to="/"><img src={logo} alt="" /></Link>
+            <Link to="/"><img src={logo} alt="A-Z Construction" /></Link>
             </div>
           </div>
           <p className="footer-text mt-4">
