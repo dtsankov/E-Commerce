@@ -14,8 +14,6 @@ export const login = async (email, password) => {
     console.log(result);
     setSession(result)
 
-    
-
     return result
     
 }

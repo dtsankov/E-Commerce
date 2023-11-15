@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as authService from "../../services/authService";
 
-export const Register = () => {
+ const Register = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,3 +41,5 @@ export const Register = () => {
         </div>
     )
 }
+
+export default Register;

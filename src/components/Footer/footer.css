@@ -1,0 +1,48 @@
+.list-group-item a {
+    text-decoration: none;
+    color: #f18e18;
+}
+
+.list-group-item:hover {
+    background-color: #f18e18;
+}
+
+.list-group-item:hover a{
+    color: #111041;
+}
+
+.footer-quick-links .quick-links-title{
+    color: #f18e18;
+}
+
+.col-lg-5 {
+    color: #f18e18;
+}
+
+.col-lg-12{
+    color: #f18e18;
+}
+
+.footer .container .row {
+    margin: auto;
+    display: flex;
+
+}
+
+.list-group-item {
+    border: none;
+    background-color: rgba(2, 2, 112, 0);
+}
+
+.footer-quick-links {
+    text-decoration: none;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 32rem;
+    overflow: hidden;
+    border-top: 2px solid rgba(0, 0, 0, 0.228);
+    padding: 20px;
+    background-color: #111041;
+}

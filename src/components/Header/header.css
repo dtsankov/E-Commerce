@@ -1,0 +1,93 @@
+.section-top-bar {
+    background: white;
+}
+
+.section-top-bar .section-container-wrapper {
+    display: flex;
+    padding: 3em 0;
+    gap: 3em;
+}
+
+.container-wrapper-top-middle {
+    min-width: 20em;
+    justify-content: center;
+    margin: 2em 0 0 3em;
+}
+
+.container-wrapper-top-right {
+    display: flex;
+    margin-left: 7em;
+}
+
+.container-wrapper-top-right .component-wrapper {
+    text-align: center;
+    padding: 1.5em 2em;
+}
+
+
+.container-wrapper-top-right .component-wrapper:hover {
+    background-color: #111041;
+}
+.component-wrapper:hover .login-logo,
+.component-wrapper:hover p {
+    color: white;
+}
+
+
+/* .container-wrapper-top-right .component-wrapper #heart:hover {
+    background-color: #f63e6e;
+} */
+/* .component-wrapper .heart:hover ,
+.heart:hover p {
+    color: white;
+} */
+
+
+/* .container-wrapper-top-right .component-wrapper #cart:hover {
+    background-color: #f18e18;
+} */
+/* .container-wrapper-top-right .component-wrapper .cart:hover,
+.cart:hover p {
+    color: white;
+} */
+
+
+.logo img {
+    max-width: 7em;
+    max-height: 6em;
+}
+
+.login-logo,
+.heart-logo,
+.cart-logo {
+    text-decoration: none;
+    min-width: 2.5em;
+    min-height: 2.5em;
+}
+
+.login-logo{
+    color: #111041;
+}
+
+.heart-logo,
+.heart-text {
+    color: #f63e6e;
+}
+
+ 
+
+.cart-logo,
+.cart-text {
+    color: #f18e18;
+}
+
+ 
+
+.login-wrapper {
+    text-decoration: none;
+    color: #111041;
+}
+
+.login-wrapper:visited {
+    text-decoration: none;
+}

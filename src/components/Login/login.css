@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+.login-section .container-wrapper {
+    padding: 7em 0 0 0;
+    margin: 0 auto;
+    max-width: 81em;
+    display: flex;
+    gap: 5em;
+}
+
+.form-wrapper{
+    padding: 0 6em;
+    border-left: 1px solid #f18e18;
+}
+
+.form-wrapper form{
+    max-width: 21em;
+    max-height: 24em;
+}
+
+
+.form-image-wrapper img {
+    border-radius: 1em;
+}
+
+.title-wrapper{
+    text-align: center;
+}
+
+.title-wrapper h2 {
+    font-size: 4em;
+    font-family: 'Zen Dots', sans-serif;
+}
+
+.title-wrapper h2 span{
+    color: #f18e18 ;
+    font-family: 'Zen Dots', sans-serif;
+}
+
+.or-section {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;  
+    max-width: 17em;
+  }
+  
+  .border-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgb(207, 202, 202); 
+  }
+  
+  .or-text {
+    margin: 0 10px;  
+  }
+
+
+

@@ -1,0 +1,35 @@
+.field-container{
+    display: flex;
+    gap: 1em;
+}
+
+.search-bar {
+    padding: 0.9em 0 0.9em 0.9em;
+    border: 0.2em solid #FFBD10;
+    border-radius: 2em;
+    min-width: 45em;
+}
+
+.search-bar:active{
+    border: 0.2em solid #FFBD10 ;
+}
+
+.search-button{
+    max-width: 3em;
+    max-height: 3em;
+    border-radius: 50%;
+    padding: 1em;
+    background-color: #FFBD10;
+    border: none;
+    color: white;
+    font-size: 1.3em;
+}
+
+ .search-button:hover{
+    background-color: white;
+    color: #FFBD10;
+ 
+ }
+
+
+
