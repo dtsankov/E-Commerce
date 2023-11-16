@@ -1,0 +1,12 @@
+.profile-section .nav-item:hover .nav-link{
+    background-color: #111041;
+    color: #f18e18;
+}
+
+.nav-fill .nav-link.active{
+    background-color: #111041;
+    color: white;
+}
+
+
+

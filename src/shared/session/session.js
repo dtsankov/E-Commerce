@@ -7,7 +7,7 @@ export const setSession = ({ _id, email, accessToken}) => {
 export const getSession = () => {
   const session = sessionStorage.getItem('User');
   const local = localStorage.getItem('User');
-  return session ? JSON.parse(session) : null, local ? JSON.parse(local) : null;
+  return session ? JSON.parse(session) : (local ? JSON.parse(local) : null);
 };
 
 export const logoutSession = () => {

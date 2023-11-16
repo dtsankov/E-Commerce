@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 //Internal imports (services,assets,custom hoooks,etc..)
 import * as authService from "../../services/authService";
 import loginImage from '../../resources/images/login.jpg';
-import { FaGoogle, FaFacebook } from 'react-icons/fa'
+import {FaFacebook } from 'react-icons/fa'
+import { SiGoogle } from 'react-icons/si';
 
 //Bootstrap imports
 import Button from 'react-bootstrap/Button';
@@ -57,7 +58,6 @@ import { useNavigate  } from "react-router-dom";
         if (isEmailValid && isPasswordValid) {
         try {
             const result = await authService.login(email, password);
-            console.log(result);
     
             if (result && result._id) {
             navigate('/profile');
@@ -140,11 +140,11 @@ import { useNavigate  } from "react-router-dom";
                         <Form.Group as={Row} className="mb-3">
                             <Col sm={{ span: 10, offset: 0 }} className="text-center">
                                 <Button variant="outline-primary" className="mr-2 mb-2 w-100">
-                                    <FaGoogle />Sign in with Google
+                                    <SiGoogle style={{ marginRight: '22px' }} />Sign in with Google
                                 </Button>
 
                                 <Button variant="outline-primary" className="w-100">
-                                    <FaFacebook />Sign in with Facebook
+                                    <FaFacebook style={{ marginRight: '16px' }} />Sign in with Facebook
                                 </Button>
                             </Col>
                         </Form.Group>

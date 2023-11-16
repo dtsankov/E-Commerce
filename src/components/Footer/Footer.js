@@ -74,19 +74,17 @@ import logo from '../../resources/images/logo.png'
             <ListGroup>
               <ListGroupItem>
                 <Link to='https://www.google.de/maps/place/%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD+%D1%82%D0%B5%D0%B0%D1%82%D1%8A%D1%80/@43.2053677,27.9190711,17z/data=!3m1!4b1!4m15!1m8!3m7!1s0x40a45409deccf483:0xfa1028629f9b2d2c!2z0LHRg9C7LiDigJ7QodC70LjQstC90LjRhtCw4oCcIDMzLCA5MDAwINCS0LDRgNC90LAg0KbQtdC90YLRitGALCDQktCw0YDQvdCw!3b1!8m2!3d43.2051301!4d27.9201724!16s%2Fg%2F11j8wczltz!3m5!1s0x40a454084b356443:0x2be0940ce34d436a!8m2!3d43.2053638!4d27.921646!16s%2Fg%2F11j48hdysx?entry=ttu'>
-                  <span><RiMapPinLine/></span>
-                  <p>Varna, Bulgaria 9000</p>
+                  <p><RiMapPinLine/>Varna, Bulgaria 9000</p>
                 </Link>
               </ListGroupItem>
               <ListGroupItem>
                 <Link to='phone:+359 896 333 666'>
-                  <span>< RiPhoneLine/></span>
-                  <span> +359 896 333 666</span>
+                  <span>< RiPhoneLine/> +359 896 333 666</span>
                 </Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='mailto:dimitur.tsankov@gmail.com'> <span><RiMailLine/></span>
-                  <p > dimitur.tsankov@gmail.com</p>
+                <Link to='mailto:dimitur.tsankov@gmail.com'>
+                  <p ><RiMailLine/> dimitur.tsankov@gmail.com</p>
                 </Link>
               </ListGroupItem>
 

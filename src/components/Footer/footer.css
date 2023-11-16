@@ -4,16 +4,17 @@
 }
 
 .list-group-item:hover {
-    background-color: #f18e18;
-    scale: 1.1;
+    scale: 1.2;
 }
 
-.list-group-item:hover a{
-    color: #111041;
-}
+
 
 .footer-quick-links .quick-links-title{
     color: #f18e18;
+}
+
+.list-group,.quick-links-title{
+    text-align: left;
 }
 
 .col-lg-5 {

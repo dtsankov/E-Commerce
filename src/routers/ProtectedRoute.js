@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ( ) => {
     const currentUser = getSession()
     return currentUser ? <Outlet /> : <Navigate to='/login' />
 }

@@ -14,8 +14,8 @@
 }
 
 .form-wrapper form {
-    max-width: 21em;
-    max-height: 24em;
+    min-width: 21em;
+    min-height: 24em;
 }
 
 .form-image-wrapper img {

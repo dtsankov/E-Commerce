@@ -26,8 +26,11 @@ import { getSession } from "../../shared/session/session";
 
    useEffect(()=>{
          const isUser = getSession()
+         console.log(isUser);
          setUser(isUser)
    },[])
+
+   console.log(typeof user);
 
     return (
 
