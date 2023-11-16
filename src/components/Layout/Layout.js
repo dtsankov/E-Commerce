@@ -7,7 +7,9 @@ const Layout = () => {
     return (
         <>
             <Header />
+            <main className="main-section">
             <Routers />
+            </main>
             <Footer />
         </>
     );

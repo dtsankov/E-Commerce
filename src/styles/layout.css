@@ -9,8 +9,12 @@ img {
     margin: 0 auto;
   }
 
-  #main{
-    height: 80vh;
+  .main-section{
+    height: 85vh;
+  }
+
+  .error-message{
+    color: red;
   }
 
   
