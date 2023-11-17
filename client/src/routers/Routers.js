@@ -28,7 +28,7 @@ import AddProduct from '../admin/AddProduct'; */
 import ProtectedRoute from './ProtectedRoute';
 /* import Favorites from '../pages/Favorites'; */
 
-const Routers = () => {
+const Routers = ({user, setUser}) => {
     return (
         <Routes>
             {/* default pages */}
@@ -56,7 +56,7 @@ const Routers = () => {
 
             {/* login & sign */}
             <Route path='signup' element={<Register />} />
-            <Route path='login' element={<Login />}/>
+            <Route path='login' element={<Login user={user} setUser={setUser}/>}/>
         </Routes>
     );
 };

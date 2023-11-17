@@ -3,12 +3,23 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
 
+import {useState,useEffect} from "react";
+import { getSession } from "../../shared/session/session";
+
 const Layout = () => {
+    const [user, setUser] = useState(getSession());
+
+  useEffect(() => {
+    const currentUser  = getSession();
+    setUser(currentUser );
+  }, []); 
+
+  
     return (
         <>
-            <Header />
+            <Header user={user} />
             <main className="main-section">
-            <Routers />
+            <Routers user={user} setUser={setUser}/>
             </main>
             <Footer />
         </>

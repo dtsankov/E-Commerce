@@ -1,7 +1,6 @@
 //React related imports
-
 import {Link} from "react-router-dom";	
-import {useState,useEffect} from "react";
+
 
 //Font Awesome Fonts and Icons
 
@@ -15,22 +14,11 @@ import logo from '../../resources/images/logo.png'
 import { Search } from "../Search/Search";
 import { LoginButton } from "./components/LoginButton";
 import { ProfileButton } from "./components/ProfileButton";
-import { getSession } from "../../shared/session/session";
 
 
 //Component
 
- const Header = () =>{
-
-   const [user,setUser] = useState('')
-
-   useEffect(()=>{
-         const isUser = getSession()
-         console.log(isUser);
-         setUser(isUser)
-   },[])
-
-   console.log(typeof user);
+ const Header = ({user,setUser}) =>{
 
     return (
 
@@ -59,7 +47,7 @@ import { getSession } from "../../shared/session/session";
                </div>
 
                <div className="container-wrapper-top-right">
-                  {user === null ? <LoginButton/> : <ProfileButton/>}
+                  {user === null ? <LoginButton /> : <ProfileButton />}
 
                   <div id="heart" className="component-wrapper">
                      <div className="heart-container"> 

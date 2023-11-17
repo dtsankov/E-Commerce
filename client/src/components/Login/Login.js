@@ -17,8 +17,7 @@ import { useNavigate  } from "react-router-dom";
 
 
 
-
- const Login = () => {
+ const Login = ({user,setUser}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -57,10 +56,14 @@ import { useNavigate  } from "react-router-dom";
     
         if (isEmailValid && isPasswordValid) {
         try {
+            
             const result = await authService.login(email, password);
-    
+
             if (result && result._id) {
-            navigate('/profile');
+            
+                setUser(result)
+
+                navigate('/profile');
             }
         } catch (error) {
             console.log(error);

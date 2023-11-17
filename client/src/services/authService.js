@@ -11,7 +11,6 @@ export const login = async (email, password) => {
     }
 
     const result = await request.post(`${baseUrl}/login`, body)
-    console.log(result);
     setSession(result)
 
     return result
@@ -25,7 +24,7 @@ export const register = async (email, password) => {
         password
     }
     const result = await request.post(`${baseUrl}/register`, body)
-    
+    setSession(result)
     return result
 }
 
