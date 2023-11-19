@@ -6,10 +6,18 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import "bootstrap/dist/css/bootstrap.css";     
 import './index.css';
 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
+     <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        pauseOnHover={false} />
     <App />
+
     </BrowserRouter>
 );
 

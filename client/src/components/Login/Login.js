@@ -1,11 +1,13 @@
 //React imports
-import { useState } from "react";
 import { useContext } from "react";
 import {Link} from "react-router-dom";
-import { StateContext } from "../../contexts/StateContext";
+ 
 
 //Internal imports (services,assets,custom hoooks,etc..)
-import * as authService from "../../services/authService";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from "../../hooks/useForm";
+
 import loginImage from '../../resources/images/login.jpg';
 import {FaFacebook } from 'react-icons/fa'
 import { SiGoogle } from 'react-icons/si';
@@ -15,75 +17,29 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import { useNavigate  } from "react-router-dom";
 
+const LoginFormKeys = {
+    Email: 'email',
+    Password: 'password'
+};
 
-
-
+const LoginFormErrors = {
+    EmailError: 'email',
+    PasswordError: 'password'
+};
 
  const Login = () => {
-    const {userHandler} = useContext(StateContext)
+    const {onLoginSubmit} = useContext(AuthContext)
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const { values, errors, changeHandler, validateEmailHandler ,validatePasswordHandler , onSubmit } = useForm({
+        [LoginFormKeys.Email]: '',
+        [LoginFormKeys.Password]: '',
+    }, 
+    {
+        [LoginFormErrors.Email]: '',
+        [LoginFormErrors.Password]: ''
+        },onLoginSubmit);
 
-
-    const navigate = useNavigate()
-
-
-    const validateEmail = () => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!regex.test(email)) {
-          setEmailError('Invalid email address');
-          return false;
-        }
-        setEmailError('');
-        return true;
-      };
-    
-      const validatePassword = () => {
-        if (password.length < 6) {
-          setPasswordError('Password must be at least 6 characters');
-          return false;
-        }
-        setPasswordError('');
-        return true;
-      };
-
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-    
-        const isEmailValid = validateEmail();
-        const isPasswordValid = validatePassword();
-    
-        if (isEmailValid && isPasswordValid) {
-        try {
-            
-            const result = await authService.login(email, password);
-
-            if (result && result._id) {
-            
-                userHandler(result)
-
-                navigate('/profile');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-        }
-    };
-
-    const onChangeEmailHandler = (e)=>{
-        setEmail(e.target.value);
-    }
-
-    
-    const onChangePasswordHandler = (e) =>{
-        setPassword(e.target.value);
-    }
 
     return(
     <section className="login-section">
@@ -103,34 +59,36 @@ import { useNavigate  } from "react-router-dom";
                         <h3>Sign In</h3>
                         <Link to="/signup" className="signup-wrapper">Sign Up?</Link>
                     </div>
-                    <Form onSubmit={onSubmit}>
+                    <Form method="POST" onSubmit={onSubmit}>
                         <Form.Group as={Row} 
-                            className={`mb-3 ${emailError ? 'has-error' : ''}`}
+                            className={`mb-3 ${errors[LoginFormErrors.EmailError] ? 'has-error' : ''}`}
                             controlId="formHorizontalEmail">
                     
                             <Col sm={10}>
                             <Form.Control type="email" placeholder="Email"
-                                value={email}
-                                onChange={onChangeEmailHandler} 
-                                onBlur={validateEmail} 
-                                className={emailError ? 'is-invalid' : ''}
+                            name={LoginFormKeys.Email}
+                            value={values[LoginFormKeys.Email]}
+                            onChange={changeHandler} 
+                            onBlur={validateEmailHandler} 
+                            className={errors[LoginFormErrors.EmailError] ? 'is-invalid': '' }
                                 />
-                            {emailError && <div className="error-message">{emailError}</div>}
+                            {errors[LoginFormErrors.EmailError] && <div className="error-message">{errors[LoginFormErrors.EmailError]}</div>}
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row} 
-                            className={`mb-3 ${passwordError ? 'has-error' : ''}`}
+                            className={`mb-3 ${errors[LoginFormErrors.Password] ? 'has-error' : ''}`}
                             controlId="formHorizontalPassword">
                     
                             <Col sm={10}>
                             <Form.Control type="password" placeholder="Password"
-                                 value={password} 
-                                 onChange={onChangePasswordHandler} 
-                                 onBlur={validatePassword}
-                                 className={passwordError ? 'is-invalid' : ''}
+                                name={LoginFormKeys.Password}
+                                value={values[LoginFormKeys.Password]} 
+                                onChange={changeHandler} 
+                                onBlur={validatePasswordHandler}
+                                className={errors[LoginFormErrors.PasswordError] ? 'is-invalid' : "" }
                                  />
-                            {passwordError && <div className="error-message">{passwordError}</div>}
+                            {errors[LoginFormErrors.PasswordError] && <div className="error-message">{errors[LoginFormErrors.PasswordError]}</div>}
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
@@ -165,5 +123,8 @@ import { useNavigate  } from "react-router-dom";
 }
 
 export default Login;
+
+
+
 
                 

@@ -1,37 +1,14 @@
-import { setSession } from "../shared/session/session"
-import * as request from "../utils/requester"
-const baseUrl = 'http://localhost:3000/auth'
+import { requestFactory } from './requester';
 
+const baseUrl = `http://localhost:3000/auth`;
 
-export const login = async (email, password) => {
-    
-    const body = {
-        email,
-        password
+export const authServiceFactory = (token) => {
+    const request = requestFactory(token);
+
+    return {
+        login: (data) => request.post(`${baseUrl}/login`, data),
+        register: (data) => request.post(`${baseUrl}/register`, data),
+        logout: () => request.get(`${baseUrl}/logout`),
     }
+};
 
-    const result = await request.post(`${baseUrl}/login`, body)
-    setSession(result)
-
-    return result
-    
-}
-
-export const register = async (email, password) => {
-    
-    const body = {
-        email,
-        password
-    }
-    const result = await request.post(`${baseUrl}/register`, body)
-    setSession(result)
-    return result
-}
-
-export const logout = async () => {
-
-    const result = await request.post(`${baseUrl}/logout`)
-
-    return result
-
-}

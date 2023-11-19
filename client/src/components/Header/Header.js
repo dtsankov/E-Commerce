@@ -1,8 +1,10 @@
 //React related imports
+import { useContext } from 'react';
 import {Link} from "react-router-dom";	
 
-
 //Font Awesome Fonts and Icons
+import { AuthContext } from '../../contexts/AuthContext';
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-solid-svg-icons"
@@ -18,7 +20,9 @@ import { ProfileButton } from "./components/ProfileButton";
 
 //Component
 
- const Header = ({user}) =>{
+ const Header = () =>{
+   const { isAuthenticated } = useContext(AuthContext);
+
 
     return (
 
@@ -47,7 +51,7 @@ import { ProfileButton } from "./components/ProfileButton";
                </div>
 
                <div className="container-wrapper-top-right">
-                  {user === null ? <LoginButton /> : <ProfileButton />}
+                  {!isAuthenticated ? <LoginButton /> : <ProfileButton />}
 
                   <div id="heart" className="component-wrapper">
                      <div className="heart-container"> 
