@@ -18,7 +18,7 @@ import { ProfileButton } from "./components/ProfileButton";
 
 //Component
 
- const Header = ({user,setUser}) =>{
+ const Header = ({user}) =>{
 
     return (
 

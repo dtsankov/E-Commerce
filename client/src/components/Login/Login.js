@@ -1,6 +1,8 @@
 //React imports
 import { useState } from "react";
+import { useContext } from "react";
 import {Link} from "react-router-dom";
+import { StateContext } from "../../contexts/StateContext";
 
 //Internal imports (services,assets,custom hoooks,etc..)
 import * as authService from "../../services/authService";
@@ -17,7 +19,10 @@ import { useNavigate  } from "react-router-dom";
 
 
 
- const Login = ({user,setUser}) => {
+
+
+ const Login = () => {
+    const {userHandler} = useContext(StateContext)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -61,7 +66,7 @@ import { useNavigate  } from "react-router-dom";
 
             if (result && result._id) {
             
-                setUser(result)
+                userHandler(result)
 
                 navigate('/profile');
             }

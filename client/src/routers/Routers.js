@@ -56,7 +56,7 @@ const Routers = ({user, setUser}) => {
 
             {/* login & sign */}
             <Route path='signup' element={<Register />} />
-            <Route path='login' element={<Login user={user} setUser={setUser}/>}/>
+            <Route path='login' element={<Login />}/>
         </Routes>
     );
 };
