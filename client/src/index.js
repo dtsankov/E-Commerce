@@ -14,7 +14,7 @@ root.render(
     <BrowserRouter>
      <ToastContainer
         position="top-center"
-        autoClose={1000}
+        autoClose={2000}
         pauseOnHover={false} />
     <App />
 

@@ -1,10 +1,10 @@
 import {useNavigate } from 'react-router-dom';
-
+import { createContext } from "react";
+import { toast } from "react-toastify";
 
 import { getSession, setSession } from "../session/session";
 import { authServiceFactory } from "../services/authService";
 
-import { createContext } from "react";
 
 export const AuthContext = createContext()
 
@@ -24,15 +24,17 @@ export const AuthProvider = ({children}) => {
     
             navigate('/profile');
         } catch (error) {
-            console.log(error);
+          toast.error(`${Object.values (error)}`)
         }
     };
     
     
     const onRegisterSubmit = async (values) => {
       const { confirmPassword, ...registerData } = values;
-      if (confirmPassword !== registerData.password) {
-          return;
+     
+      if (confirmPassword!== registerData.password) {
+        toast.error('Passwords do not match');
+        return;
       }
     
       try {
@@ -42,7 +44,8 @@ export const AuthProvider = ({children}) => {
     
           navigate('/profile');
       } catch (error) {
-          console.log('There is a problem');
+        
+        toast.error(`${Object.values (error)}`)
       }
     };
     

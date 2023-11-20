@@ -63,38 +63,43 @@ const RegisterFormErrors = {
                             </div>
                             <Form onSubmit={onSubmit}>
                                 <Form.Group as={Row} 
-                                    // className={`mb-3 ${emailError ? 'has-error' : ''}`}
+                                    className={`mb-3 ${errors[RegisterFormErrors.EmailError] ? 'has-error' : ''}`}
                                     controlId="formHorizontalEmail">
                             
                                     <Col sm={10}>
-                                    <Form.Control type="email" placeholder="Email " className="mb-3"
+                                    <Form.Control type="email" placeholder="Email "
                                         name="email"
                                         value={values.email}
                                         onChange={changeHandler} 
-                                        //onBlur={validateEmail} 
-                                        //className={emailError ? 'is-invalid' : ''}
+                                        onBlur={validateEmailHandler} 
+                                        className={errors[RegisterFormErrors.EmailError] ? 'is-invalid': '' }
                                         />
-                                    {/* {emailError && <div className="error-message">{emailError}</div>} */}
+                                    {errors[RegisterFormErrors.EmailError] && <div className="error-message">{errors[RegisterFormErrors.EmailError]}</div>}
                                     </Col>
                                 </Form.Group>
         
                                 <Form.Group as={Row} 
-                                    // className={`mb-3 ${passwordError ? 'has-error' : ''}`}
+                                    className={`mb-3 ${errors[RegisterFormErrors.Password] ? 'has-error' : ''}`}
                                     controlId="formHorizontalPassword">
                             
                                     <Col sm={10}>
-                                    <Form.Control type="password" placeholder="Password" className="mb-3"
+                                    <Form.Control type="password" placeholder="Password" 
                                         name="password"
                                         value={values.password} 
                                         onChange={changeHandler} 
-                                         //onBlur={validatePassword}
-                                         //className={passwordError ? 'is-invalid' : ''}
+                                         onBlur={validatePasswordHandler}
+                                         className={errors[RegisterFormErrors.PasswordError] ? 'is-invalid' : "" }
                                          />
-                                    {/* {passwordError && <div className="error-message">{passwordError}</div>} */}
+                                    {errors[RegisterFormErrors.PasswordError] && <div className="error-message">{errors[RegisterFormErrors.PasswordError]}</div>}
                                     </Col>
+
+                                    </Form.Group>
+                                    <Form.Group as={Row} 
+                                    controlId="formHorizontalConfirmPassword">
+
                                     <Col sm={10}>
                                         
-                                    <Form.Control type="re-password" placeholder="Confirm Password" className="mb-3"
+                                    <Form.Control type="password" placeholder="Confirm Password" className="mb-3"
                                         name="re-password"
                                         value={values.confirmPassword} 
                                         onChange={changeHandler} 

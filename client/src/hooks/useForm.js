@@ -3,7 +3,6 @@ import { useState} from 'react';
 export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState(initialErrors);
-    console.log(initialErrors);
 
     const changeHandler = (e) => {
         setValues(state => ({...state, [e.target.name]: e.target.value}));
@@ -11,7 +10,10 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
 
     const validateEmailHandler = (e) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!regex.test(values.email)) {
+        if (values.email.length === 0) {
+            setErrors(state => ({ ...state, [e.target.name]: 'Email is required' }));
+            return false;
+        }else if (!regex.test(values.email)) {
             setErrors(state => ({ ...state, [e.target.name]:'Invalid email address' }));
           return false;
         }
@@ -19,7 +21,10 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
     }
 
     const validatePasswordHandler = (e) => {
-        if (values.password.length < 6) {
+        if (values.password.length === 0) {
+            setErrors(state => ({ ...state, [e.target.name]: 'Password is required' }));
+            return false;
+        }else if (values.password.length < 6) {
             setErrors(state => ({ ...state, [e.target.name]: 'Password must be at least 6 characters' }));
             return false;
           }
