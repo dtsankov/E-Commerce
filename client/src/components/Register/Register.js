@@ -18,20 +18,20 @@ import Row from 'react-bootstrap/Row';
 const RegisterFormKeys = {
     Email: 'email',
     Password: 'password',
-    ConfirmPassword:'re-password'
+    ConfirmPassword:'repassword'
 };
 
 const RegisterFormErrors = {
     EmailError: 'email',
     PasswordError: 'password',
-    ConfirmPassword:'re-password'
+    ConfirmPasswordError:'repassword'
 
 };
 
 
     export const Register = () => {
         const { onRegisterSubmit } = useContext(AuthContext);
-        const { values, errors , changeHandler, validateEmailHandler ,validatePasswordHandler, onSubmit } = useForm({
+        const { values, errors , changeHandler, validateEmailHandler ,validatePasswordHandler,validateRePasswordHandler, onSubmit } = useForm({
             [RegisterFormKeys.Email]: '',
             [RegisterFormKeys.Password]: '',
             [RegisterFormKeys.ConfirmPassword]: '',
@@ -39,7 +39,7 @@ const RegisterFormErrors = {
         {
             [RegisterFormErrors.Email]: '',
             [RegisterFormErrors.Password]: '',
-            [RegisterFormErrors.ConfirmPassword]: '',
+            [RegisterFormErrors.ConfirmPasswordError]: '',
         }, onRegisterSubmit);
 
     
@@ -94,19 +94,20 @@ const RegisterFormErrors = {
                                     </Col>
 
                                     </Form.Group>
-                                    <Form.Group as={Row} 
+                                    <Form.Group as={Row}
+                                    className={`mb-3 ${errors[RegisterFormErrors.ConfirmPassword] ? 'has-error' : ''}`}
                                     controlId="formHorizontalConfirmPassword">
 
                                     <Col sm={10}>
                                         
-                                    <Form.Control type="password" placeholder="Confirm Password" className="mb-3"
-                                        name="re-password"
+                                    <Form.Control type="password" placeholder="Confirm Password"  
+                                        name="repassword"
                                         value={values.confirmPassword} 
                                         onChange={changeHandler} 
-                                         //onBlur={validatePassword}
-                                         //className={passwordError ? 'is-invalid' : ''}
+                                         onBlur={validateRePasswordHandler}
+                                         className={errors[RegisterFormErrors.ConfirmPasswordError] ? 'is-invalid' : "" }
                                          />
-                                    {/* {passwordError && <div className="error-message">{passwordError}</div>} */}
+                                    {errors[RegisterFormErrors.ConfirmPasswordError] && <div className="error-message">{errors[RegisterFormErrors.ConfirmPasswordError]}</div>}
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row} className="mb-3">

@@ -4,6 +4,8 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState(initialErrors);
 
+  
+
     const changeHandler = (e) => {
         setValues(state => ({...state, [e.target.name]: e.target.value}));
     };
@@ -31,6 +33,17 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
           setErrors(state => ({...state, [e.target.name]: ""}));
     }
 
+    const validateRePasswordHandler = (e) => {
+        if (values.repassword.length === 0) {
+            setErrors(state => ({ ...state, [e.target.name]: 'Password is required' }));
+            return false;
+        }else if (values.password !== values.repassword) {
+            setErrors(state => ({ ...state, [e.target.name]: 'Password does not match' }));
+            return false;
+          }
+          setErrors(state => ({...state, [e.target.name]: ""}));
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -50,6 +63,7 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
         changeHandler,
         validateEmailHandler,
         validatePasswordHandler,
+        validateRePasswordHandler,
         onSubmit,
         changeValues,
     };

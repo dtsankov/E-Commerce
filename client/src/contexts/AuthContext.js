@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
             const result = await authService.login(data);
     
             setSession(result)
-    
+            toast.success('Login successful')	
             navigate('/profile');
         } catch (error) {
           toast.error(`${Object.values (error)}`)
@@ -30,18 +30,16 @@ export const AuthProvider = ({children}) => {
     
     
     const onRegisterSubmit = async (values) => {
-      const { confirmPassword, ...registerData } = values;
-     
-      if (confirmPassword!== registerData.password) {
-        toast.error('Passwords do not match');
+      const { repassword, ...registerData } = values;
+      console.log(values.repassword);
+      if (repassword !== registerData.password) {
         return;
       }
-    
       try {
           const result = await authService.register(registerData);
     
           setSession(result)
-    
+          toast.success('Register successful')
           navigate('/profile');
       } catch (error) {
         
