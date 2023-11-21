@@ -26,9 +26,10 @@ import Phones from '../components/Product Pages/Phones' */
 import AddProduct from '../admin/AddProduct'; */
 
 import ProtectedRoute from './ProtectedRoute';
+import { Logout } from '../components/Header/components/Logout';
 /* import Favorites from '../pages/Favorites'; */
 
-const Routers = ({user, setUser}) => {
+const Routers = () => {
     return (
         <Routes>
             {/* default pages */}
@@ -57,6 +58,7 @@ const Routers = ({user, setUser}) => {
             {/* login & sign */}
             <Route path='signup' element={<Register />} />
             <Route path='login' element={<Login />}/>
+            <Route path='logout' element={<Logout />}/>
         </Routes>
     );
 };

@@ -31,7 +31,6 @@ export const AuthProvider = ({children}) => {
     
     const onRegisterSubmit = async (values) => {
       const { repassword, ...registerData } = values;
-      console.log(values.repassword);
       if (repassword !== registerData.password) {
         return;
       }
@@ -48,9 +47,9 @@ export const AuthProvider = ({children}) => {
     };
     
     const onLogout = async () => {
+
       await authService.logout();
     
-      setSession({})
     };
     
      

@@ -1,12 +1,13 @@
 //React related imports
 import { useContext } from 'react';
 import {Link} from "react-router-dom";	
+import { AuthContext } from '../../contexts/AuthContext';     
 
 //Font Awesome Fonts and Icons
-import { AuthContext } from '../../contexts/AuthContext';
-
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons"
+
+
 import {faHeart} from "@fortawesome/free-solid-svg-icons"
 import {faCartShopping} from "@fortawesome/free-solid-svg-icons"
 import logo from '../../resources/images/logo.png'
@@ -16,6 +17,7 @@ import logo from '../../resources/images/logo.png'
 import { Search } from "../Search/Search";
 import { LoginButton } from "./components/LoginButton";
 import { ProfileButton } from "./components/ProfileButton";
+
 
 
 //Component
@@ -50,7 +52,23 @@ import { ProfileButton } from "./components/ProfileButton";
 
                </div>
 
+                  
                <div className="container-wrapper-top-right">
+
+               {isAuthenticated ? 
+                  <div id="heart" className="component-wrapper">
+                     <div className="heart-container"> 
+                        <Link to="logout" className="login-wrapper">
+                           <div>
+                              <p>
+                                 <FontAwesomeIcon icon={faArrowRightFromBracket} className="login-logo" />
+                              </p>
+                              <p className="login-text">Logout</p>
+                           </div>
+                        </Link>
+                     </div>
+                  </div> : '' }
+                  
                   {!isAuthenticated ? <LoginButton /> : <ProfileButton />}
 
                   <div id="heart" className="component-wrapper">
