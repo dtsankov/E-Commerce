@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Zen+Dots&display=swap');
 html{
-    font: 14px/1.15 'PT Serif', 'PT Sans';
+    font: 12px/1.15 'Merriweather Sans';
+    letter-spacing: 2px;
 }
 
 body{

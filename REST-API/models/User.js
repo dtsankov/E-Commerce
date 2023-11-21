@@ -5,6 +5,13 @@ const userSchema = new mongoose.Schema({
     password: { required: true,type: String,minlength: [5, 'Password should have at least 5 characters!'],maxlength: [20, 'Password cannot have more than 20 characters!'],
     },
     role: {required: false,type: String,enum: ['admin','user'],default: 'user'},
+    username: {required: false,type: String},
+    address: {required: false,type: String},
+    city: {required: false,type: String},
+    country: {required: false,type: String},
+    postalCode: {required: false,type: String},
+    phone: {required: false,type: String},
+    
 })
 userSchema.pre('save', function (next) {
     bcrypt.hash(this.password, 10)

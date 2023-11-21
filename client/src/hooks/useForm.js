@@ -26,7 +26,7 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
         if (values.password.length === 0) {
             setErrors(state => ({ ...state, [e.target.name]: 'Password is required' }));
             return false;
-        }else if (values.password.length < 6) {
+        }else if (values.repassword && (values.password.length < 6)) {
             setErrors(state => ({ ...state, [e.target.name]: 'Password must be at least 6 characters' }));
             return false;
           }

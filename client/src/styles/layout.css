@@ -10,7 +10,7 @@ img {
   }
 
   .main-section{
-    height: 85vh;
+    min-height: 85vh;
   }
 
   .error-message{

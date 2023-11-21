@@ -8,5 +8,14 @@
     color: white;
 }
 
+.profile-section .section-wrapper{
+    margin: 12em auto;
+}
+
+.fieldset-wrapper{
+    min-width: 20em;
+    min-height: 20em;
+
+}
 
 

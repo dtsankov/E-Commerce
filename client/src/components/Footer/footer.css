@@ -1,3 +1,8 @@
+.footer .container{
+    max-width: 105em;
+}
+
+
 .list-group-item a {
     text-decoration: none;
     color: #f18e18;
@@ -17,8 +22,13 @@
     text-align: left;
 }
 
+.col-lg-3{
+    width: 22%;
+}
+
 .col-lg-5 {
     color: #f18e18;
+    text-align: -webkit-center;
 }
 
 .col-lg-12{
@@ -28,7 +38,7 @@
 .footer .container .row {
     margin: auto;
     display: flex;
-
+    gap: 0.5em;
 }
 
 .list-group-item {
@@ -42,7 +52,7 @@
 }
 
 .footer {
-    margin-top: 3em;
+    margin-top: 13em;
     overflow: hidden;
     border-top: 2px solid rgba(0, 0, 0, 0.228);
     padding: 20px;

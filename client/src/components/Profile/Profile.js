@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import './profile.css'; 
+import { PersonalDetails } from './components/PerosnalDetails';
 
 
 const Profile = () => {
@@ -15,7 +16,7 @@ const Profile = () => {
                         fill
                 >
                     <Tab eventKey="personal-information" title="Personal Information">
-                        Tab content for Home
+                        <PersonalDetails/>
                     </Tab>
                     <Tab eventKey="profile" title="Add Product">
                         Tab content for Profile
