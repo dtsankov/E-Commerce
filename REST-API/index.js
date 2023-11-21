@@ -6,7 +6,7 @@ const authController = require('./controllers/authController')
 const cookieParser = require('cookie-parser');
 const { authMiddleware } = require('./middlewares/auth');
 const cookieSecret = process.env.COOKIESECRET || 'SoftUni';
-const connectionString = 'mongodb://127.0.0.1:27017/adventuresDb';
+const connectionString = 'mongodb://127.0.0.1:27017/a-zConstructionDb';
 
 start();
 
@@ -26,7 +26,7 @@ async function start() {
 
   
     app.use('/auth', authController)
-    app.use('/adventures/catalog', adventureController);
+    app.use('/products/catalog', adventureController);
     
     app.listen(3000, () => console.log('REST service started on port 3000!'));
 }

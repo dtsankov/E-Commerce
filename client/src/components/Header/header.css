@@ -91,3 +91,17 @@
 .login-wrapper:visited {
     text-decoration: none;
 }
+
+.login-wrapper.logout-button {
+    background: white;
+    border: none;
+}
+.container-wrapper-top-right .component-wrapper:hover,
+.login-wrapper.logout-button:hover,
+.component-wrapper:hover div,
+.component-wrapper:hover > p
+ {
+    background: #111041;
+
+}
+

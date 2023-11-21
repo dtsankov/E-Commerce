@@ -16,6 +16,8 @@ import logo from '../../resources/images/logo.png'
 import { Search } from "../Search/Search";
 import { LoginButton } from "./components/LoginButton";
 import { ProfileButton } from "./components/ProfileButton";
+import { LogoutButton } from "./components/LogoutButton";
+
 
 
 //Component
@@ -50,7 +52,16 @@ import { ProfileButton } from "./components/ProfileButton";
 
                </div>
 
+                  
                <div className="container-wrapper-top-right">
+
+               {isAuthenticated ? 
+                  <div id="heart" className="component-wrapper">
+                     <div className="heart-container"> 
+                         <LogoutButton/>
+                     </div>
+                  </div> : '' }
+                  
                   {!isAuthenticated ? <LoginButton /> : <ProfileButton />}
 
                   <div id="heart" className="component-wrapper">
