@@ -12,18 +12,22 @@ const validateToken = (token) => {
     }
 }
 const createAccessToken = (user) => {
+
     const payload = {
         _id: user._id,
         email: user.email,
         role: user.role,
     }
     const accessToken = jwt.sign(payload, server.SECRET_KEY)
+
+
     return {
         email: user.email,
         _id: user._id,
         role: user.role,
         accessToken,
     };
+
 }
 const register = async (email, password) => {
     const existingEmail = await User.findOne({ email })

@@ -98,8 +98,8 @@
 }
 .container-wrapper-top-right .component-wrapper:hover,
 .login-wrapper.logout-button:hover,
-.component-wrapper:hover div,
-.component-wrapper:hover > p
+.container-wrapper-top-right .component-wrapper:hover div,
+.container-wrapper-top-right .component-wrapper:hover > p
  {
     background: #111041;
 

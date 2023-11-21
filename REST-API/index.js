@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('./middlewares/cors');
-const adventureController = require('./controllers/adventureController')
+const productController = require('./controllers/productController')
 const authController = require('./controllers/authController')
 const cookieParser = require('cookie-parser');
 const { authMiddleware } = require('./middlewares/auth');
@@ -26,7 +26,7 @@ async function start() {
 
   
     app.use('/auth', authController)
-    app.use('/products/catalog', adventureController);
+    app.use('/product/catalog', adventureController);
     
     app.listen(3000, () => console.log('REST service started on port 3000!'));
 }
