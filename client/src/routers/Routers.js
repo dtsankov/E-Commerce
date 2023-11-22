@@ -1,4 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
+import { useContext } from 'react';
+
+
+import {ProductContext} from '../contexts/ProductContext'
 
 
 import React from "react";
@@ -10,6 +14,9 @@ import Shop from '../pages/Shop' */
 import Register from '../components/Register/Register'
 import Login from '../components/Login/Login'
 import Profile from '../components/Profile/Profile';
+import {Logout}  from '../components/Header/components/Logout';
+
+
 
 //product pages // 
 
@@ -21,19 +28,24 @@ import Watches from '../components/Product Pages/Watches'
 import Phones from '../components/Product Pages/Phones' */
 
 
+import ProtectedRoute from './ProtectedRoute';
 
 /* import AllProducts from '../admin/YourProducts';
-import AddProduct from '../admin/AddProduct'; */
 
-import ProtectedRoute from './ProtectedRoute';
-import { Logout } from '../components/Header/components/Logout';
 /* import Favorites from '../pages/Favorites'; */
 
 const Routers = () => {
+
+const {
+    onCreateProductSubmit,
+    onProductEditSubmit,
+    products   
+    } = useContext(ProductContext);
+
     return (
         <Routes>
             {/* default pages */}
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home products={products} />} />
           {/*   <Route path='shop' element={<Shop />} />
             <Route path='shop/:id' element={<ProductDetails />} />
             <Route path='cart' element={<Cart />} />
@@ -42,9 +54,8 @@ const Routers = () => {
             {/* admin pages */}
 
             <Route path='/*' element={<ProtectedRoute />}>
-                <Route path='profile' element={<Profile />} />
-                {/* <Route path='profile/add-product' element={<AddProduct />} />
-                <Route path='checkout' element={<Checkout />} /> */}
+                <Route path='profile' element={<Profile onCreateProductSubmit={onCreateProductSubmit} onProductEditSubmit={onProductEditSubmit}/>} />
+                {/* <Route path='checkout' element={<Checkout />} />  */}
             </Route>
             {/* products items */}
 

@@ -29,8 +29,8 @@ productController.post("/create", async (req, res) => {
 
 //get All Adventures
 productController.get("/", async (req, res) => {
-  const product = await getAllProducts();
-  res.status(200).json(product);
+  const products = await getAllProducts();
+  res.status(200).json(products);
 });
 
 //get most rated adventures

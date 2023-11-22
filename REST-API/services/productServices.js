@@ -11,8 +11,9 @@ async function addProduct(product, id) {
     }
 }
 async function getAllProducts() {
-    return await Product.find({}).sort({ created_at: -1 });
-}
+    return await Product.find({})
+} 
+   
 
 async function getProductById(id) {
     return await Product.findById(id);
@@ -22,8 +23,11 @@ async function updateProduct(id, product) {
     const existing = await Product.findById(id);
 
     existing.title = product.title;
-    existing.description = product.description;
+    existing.brand = product.brand;
+    existing.category = product.category;
+    existing.weigth = product.weigth;
     existing.price = product.price;
+    existing.imageUrl = product.imageUrl;
 
     return existing.save();
 }

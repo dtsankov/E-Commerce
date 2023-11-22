@@ -3,9 +3,13 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import './profile.css'; 
 import { PersonalDetails } from './components/PerosnalDetails';
+import CreateProduct from '../CreateProduct/CreateProduct';
 
 
-const Profile = () => {
+const Profile = ({
+    onCreateProductSubmit,
+    
+}) => {
         return (
             <section className='profile-section'>
                 <div className="container">
@@ -19,7 +23,7 @@ const Profile = () => {
                         <PersonalDetails/>
                     </Tab>
                     <Tab eventKey="profile" title="Add Product">
-                        Tab content for Profile
+                        <CreateProduct onCreateProductSubmit={onCreateProductSubmit}/>
                     </Tab>
                     <Tab eventKey="your-products" title="Your Products">
                         Tab content for Loooonger Tab
