@@ -1,5 +1,5 @@
 const { Result } = require("express-validator");
-const { getByOwner } = require("../services/adventureServices");
+const { getByOwner } = require("../services/productServices");
 const { register, login, updateUser } = require("../services/userServices");
 
 const authController = require("express").Router();

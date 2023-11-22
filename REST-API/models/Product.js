@@ -3,7 +3,7 @@ const { Schema, model, Types } = require('mongoose');
 const URL_PATTERN = /^https?:\/\/.+$/i
 
 
-const adventureSchema = new Schema({
+const productSchema = new Schema({
     title: { type: String, required: true, minlength: [5, 'Title must be at least 5 characters long'] },
     description: { type: Array, required: true, minlength: [10, 'Description must be at least 10 characters long'] },
     price: { type: Number, required: true, min: [15, 'Price must be at least 15BGN!'] },
@@ -12,9 +12,9 @@ const adventureSchema = new Schema({
         message : "Image URL is not valid "
     } },
     _ownerId: { type: Types.ObjectId, ref: 'User', required: true },
+    }, 
+    { timestamps: { createdAt: 'created_at' } });
 
-}, { timestamps: { createdAt: 'created_at' } });
+const Product = model('Product', productSchema);
 
-const Adventure = model('Adventure', adventureSchema);
-
-module.exports = Adventure;
+module.exports = Product;

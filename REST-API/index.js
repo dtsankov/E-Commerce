@@ -26,7 +26,7 @@ async function start() {
 
   
     app.use('/auth', authController)
-    app.use('/product/catalog', adventureController);
+    app.use('/products/catalog', productController);
     
     app.listen(3000, () => console.log('REST service started on port 3000!'));
 }

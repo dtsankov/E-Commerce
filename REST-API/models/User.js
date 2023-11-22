@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
     country: {required: false,type: String},
     postalCode: {required: false,type: String},
     phone: {required: false,type: String},
+    products: [{type: mongoose.Types.ObjectId,ref: 'Product',}]
     
 })
 userSchema.pre('save', function (next) {

@@ -64,12 +64,12 @@ const login = async (email, password) => {
     }
 }
 
-const updateUserAdventures = async (id, adventureId) => {
+const updateUserProducts = async (id, productId) => {
     try {
         const user = await User.findById(id);
-        let adventuresArr = user.adventures
-        adventuresArr.push(adventureId)
-        await User.findByIdAndUpdate(id, { adventures: adventuresArr })
+        let productsArr = user.products
+        productsArr.push(productId)
+        await User.findByIdAndUpdate(id, { products: productsArr })
     } catch (error) {
         throw new Error(error)
     }
@@ -93,7 +93,7 @@ module.exports = {
     register,
     createAccessToken,
     validateToken,
-    updateUserAdventures,
+    updateUserProducts,
     updateUser,
     logout,
 }
