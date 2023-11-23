@@ -3,6 +3,7 @@ import { CatalogItem } from "./components/CatalogItem";
 export const Catalog = ({
     products,
 }) => {
+     
     return (
         <section id="catalog-page">
             <div className="container">

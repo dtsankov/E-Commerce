@@ -3,8 +3,9 @@ const Product = require("../models/Product")
 require('dotenv').config()
 
 async function addProduct(product, id) {
+    console.log(product,id);
     try {
-        product.owner = id;
+        product.ownerId = id;
         return await Product.create({ ...product })
     } catch (error) {
         throw new Error(error)

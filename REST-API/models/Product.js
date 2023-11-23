@@ -16,10 +16,17 @@ const productSchema = new Schema({
     ],default: ''},
     weigth: { type: Number, required: true, min: [1, 'Weigth must be at least 1kg!'] },
     price: { type: Number, required: true, min: [15, 'Price must be at least 15BGN!'] },
-    img: { type: String, required: [true, 'Image URL is required'], validate:{
+    description: { type: String, required: true, minlength: [10, 'Description must be at least 10 characters long'] },
+    imageUrl: { type: String, required: [true, 'Image URL is required'], validate:{
         validator: (value)=> URL_PATTERN.test(value),
         message : "Image URL is not valid "
     } },
+    comments: [
+        {
+            userId: { type: Types.ObjectId, ref: 'User', required: true },
+            text: { type: String, required: true },
+        }
+    ],
     _ownerId: { type: Types.ObjectId, ref: 'User', required: true },
     }, 
     { timestamps: { createdAt: 'created_at' } });

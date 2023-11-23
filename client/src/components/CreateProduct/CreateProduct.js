@@ -1,24 +1,29 @@
+import { useContext } from 'react';
 import { useForm } from '../../hooks/useForm';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 
  const CreateProduct = ({
     onCreateProductSubmit,
 }) => {
+    const {userId} = useContext(AuthContext)
     const { values, changeHandler, onSubmit } = useForm({
+        userId: userId,
         title: '',
         brand: '',
         category: '',
         weigth: '',
         price:'',
         imageUrl: '',
+        description:'',
     }, {} , onCreateProductSubmit);
 
     return (
         <section id="create-page" className="auth">
             <form id="create" method="post" onSubmit={onSubmit}>
                 <div className="container">
-                    <h1>Create Game</h1>
+                    <h1>Create Product</h1>
 
                     <label htmlFor="leg-title">Machine title:</label>
                     <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Enter game title..." />
@@ -42,13 +47,25 @@ import { useForm } from '../../hooks/useForm';
                         <option value="Hand tools">Hand tools</option>
                     </select>
 
-                    <label htmlFor="game-img">Weight:</label>
+                    <label htmlFor="weigth">Weight:</label>
                     <input value={values.weigth} onChange={changeHandler} type="text" id="weigth" name="weigth" placeholder="1-100kg" />
 
                     <label htmlFor="price">Price:</label>
                     <input value={values.price} onChange={changeHandler} type="text" id="price" name="price" placeholder="0-1000 лв." />
 
-                    <label htmlFor="game-img">Image:</label>
+                    <label htmlFor="description">Image:</label>
+                    <textarea
+                        value={values.description}
+                        onChange={changeHandler}
+                        type="text"
+                        id="imageUrl"
+                        name="description"
+                        placeholder="Short summary..."
+                        rows="4" 
+                        cols="50" 
+                    ></textarea>
+
+                    <label htmlFor="game-img">Description:</label>
                     <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
 
                     <input className="btn submit" type="submit" value="Create Game" />

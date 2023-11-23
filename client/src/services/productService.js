@@ -23,12 +23,11 @@ export const productServiceFactory = (token) => {
         return result;
     };
     
-    const create = async (productData, userId) => {
+    const create = async (productData) => {
         
-        const result = await request.post(`${baseUrl}/create`, productData, userId);
+        const result = await request.post(`${baseUrl}/create`, productData);
 
-        console.log(result);
-    
+        
     
         return result;
     };

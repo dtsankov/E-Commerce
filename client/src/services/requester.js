@@ -1,3 +1,4 @@
+
 const request = async (method, token, url, data) => {
     const options = {};
 
@@ -20,6 +21,7 @@ const request = async (method, token, url, data) => {
         };
     }
 
+
     const response = await fetch(url, options);
 
     if (response.status === 204) {
@@ -36,6 +38,7 @@ const request = async (method, token, url, data) => {
 };
 
 export const requestFactory = (token) => {
+   
     return {
         get: request.bind(null, 'GET', token),
         post: request.bind(null, 'POST', token),
