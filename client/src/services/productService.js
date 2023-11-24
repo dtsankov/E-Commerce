@@ -19,6 +19,7 @@ export const productServiceFactory = (token) => {
     
     const getOne = async (productId) => {
         const result = await request.get(`${baseUrl}/${productId}`);
+
     
         return result;
     };

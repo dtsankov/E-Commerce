@@ -5,7 +5,10 @@ const {
   deleteProduct,
   getAllProducts,
   addProduct,
+  addComment,
+  getProductComments,
 } = require("../services/productServices");
+
 const { updateUserProducts } = require("../services/userServices");
 
 const productController = require("express").Router();
@@ -27,19 +30,19 @@ productController.post("/create", async (req, res) => {
   }
 });
 
-//get All Adventures
+//get All Products
 productController.get("/", async (req, res) => {
   const products = await getAllProducts();
   res.status(200).json(products);
 });
 
-//get most rated adventures
+//Get most rated products
 productController.get("/most-recent", async (req, res) => {
   const product = await getMostRated();
   res.status(200).json(product);
 });
 
-//get adventure by ID
+//Get product by ID
 productController.get("/:id", async (req, res) => {
   try {
     let id = req.params.id;
@@ -55,7 +58,7 @@ productController.get("/:id", async (req, res) => {
   }
 });
 
-//update Adventure by ID
+//Update Product by ID
 productController.put("/edit/:id", async (req, res) => {
   try {
     const product = await getProductById(req.params.id);
@@ -73,7 +76,19 @@ productController.put("/edit/:id", async (req, res) => {
   }
 });
 
-// delete adventure
+//Add Comments to Product and Update by ID
+
+productController.put('/add-comment/:id', async (req, res) => {
+  try {
+    const result = await addComment(req.params.id, req.body);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: err.message });
+  }
+})
+
+
+// Delete product
 productController.delete("/:id", async (req, res) => {
   try {
     const product = await getProductById(req.params.id);

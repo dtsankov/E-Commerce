@@ -1,5 +1,5 @@
  import {useNavigate } from 'react-router-dom';
-import { createContext } from "react";
+import { createContext,useContext } from "react";
 import { toast } from "react-toastify";
 
 import { getSession, setSession } from "../session/session";
@@ -70,4 +70,10 @@ export const AuthProvider = ({children}) => {
             {children}
         </AuthContext.Provider>
     )
-}
+};
+
+export const useAuthContext = () => {
+  const context = useContext(AuthContext);
+
+  return context;
+};

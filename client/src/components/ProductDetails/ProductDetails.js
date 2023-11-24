@@ -9,29 +9,32 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { AddComment } from './components/AddComment';
 import { productReducer } from '../../reducers/productReducer';
 
-export const ProductDetails = () => {
+ const ProductDetails = () => {
     const { productId } = useParams();
+
     const { userId, isAuthenticated, userEmail } = useAuthContext();
     const [product, dispatch] = useReducer(productReducer, {});
     const productService = useService(productServiceFactory)
     const navigate = useNavigate();
 
+    
     useEffect(() => {
-        Promise.all([
-            productService.getOne(productId),
-            commentService.getAll(productId),
-        ]).then(([productData, comments]) => {
+        productService.getOne(productId)
+        .then((productData) => {
             const productState = {
                 ...productData,
-                comments,
             };
-            
             dispatch({type: 'PRODUCT_FETCH', payload: productState})
-        });
+        })
     }, [productId]);
 
     const onCommentSubmit = async (values) => {
-        const response = await commentService.create(productId, values.comment);
+        const comment = {
+            userId: userId,
+            author: userEmail,
+            text: values.comment,
+        }
+        const response = await commentService.create(comment,productId);
 
         dispatch({
             type: 'COMMENT_ADD',
@@ -52,24 +55,32 @@ export const ProductDetails = () => {
 
     return (
         <section id="game-details">
-            <h1>Game Details</h1>
+            <h1>Product Details</h1>
             <div className="info-section">
 
-                <div className="game-header">
+                <div className="product-header">
                     <img className="game-img" src={product.imageUrl} alt='' />
                     <h1>{product.title}</h1>
-                    <span className="levels">MaxLevel: {product.maxLevel}</span>
-                    <p className="type">{product.category}</p>
+                    <span className="brand">Brand: {product.brand}</span>
+                    <p className="type">Category: {product.category}</p>
                 </div>
 
-                <p className="text">{product.summary}</p>
+                <p className="weigth">Weigth: {product.weigth}</p>
+
+                <p className="price">Price: {product.price} EUR</p>
+
+                <p className="description">Description: {product.description}</p>
+
+
 
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
                         {product.comments && product.comments.map(x => (
-                            <li key={x._id} className="comment">
-                                <p>{x.author.email}: {x.comment}</p>
+                            
+                            <li key={x._id}  className="comment">
+                                
+                                <p>{x.author}: {x.text}</p>
                             </li>
                         ))}
                     </ul>
@@ -91,3 +102,18 @@ export const ProductDetails = () => {
         </section>
     );
 };
+
+export default ProductDetails;
+
+
+/* Promise.all([
+    productService.getOne(productId),
+    commentService.getAll(productId),
+]).then(([productData, comments]) => {
+    const productState = {
+        ...productData,
+        comments,
+    };
+    
+    dispatch({type: 'PRODUCT_FETCH', payload: productState})
+}); */

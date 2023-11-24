@@ -7,9 +7,10 @@ import {ProductContext} from '../contexts/ProductContext'
 
 import React from "react";
 import Home from '../components/Home/Home'
+import ProductDetails from '../components/ProductDetails/ProductDetails'
+
 /* import Cart from '../pages/Cart'
 import Checkout from '../pages/Checkout'
-import ProductDetails from '../components/UI/ProductDetails'
 import Shop from '../pages/Shop' */
 import Register from '../components/Register/Register'
 import Login from '../components/Login/Login'
@@ -46,8 +47,9 @@ const {
         <Routes>
             {/* default pages */}
             <Route path='/' element={<Home products={products} />} />
+            <Route path='/catalog/:productId' element={<ProductDetails />} />
           {/*   <Route path='shop' element={<Shop />} />
-            <Route path='shop/:id' element={<ProductDetails />} />
+            
             <Route path='cart' element={<Cart />} />
             <Route path='favorites' element={<Favorites />} /> */}
 

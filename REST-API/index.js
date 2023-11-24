@@ -16,10 +16,10 @@ async function start() {
     console.log('Database connected');
 
     const app = express();
+    app.use(cors({ origin: 'http://localhost:3001', credentials: true }));
     app.use(authMiddleware);
     app.use(cookieParser(cookieSecret));
     app.use(express.json());
-    app.use(cors());
     app.get('/', (req, res) => {
         res.json({ message: 'REST service active' });
     });

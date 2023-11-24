@@ -24,6 +24,7 @@ const productSchema = new Schema({
     comments: [
         {
             userId: { type: Types.ObjectId, ref: 'User', required: true },
+            author: { type: String, required: true },
             text: { type: String, required: true },
         }
     ],

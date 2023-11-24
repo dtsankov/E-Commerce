@@ -3,7 +3,6 @@ const Product = require("../models/Product")
 require('dotenv').config()
 
 async function addProduct(product, id) {
-    console.log(product,id);
     try {
         product.ownerId = id;
         return await Product.create({ ...product })
@@ -45,6 +44,23 @@ async function getMostRated() {
 async function getByOwner(id) {
     return await Product.find({ _ownerId: id })
 }
+// Comment requests handle
+
+async function addComment(productId,comment) {
+    try {
+        const product = await Product.findById(productId)
+        let commentsArray = product.comments;
+        commentsArray.push(comment)
+        await Product.findByIdAndUpdate(productId, { comments: commentsArray })
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+
+async function getProductComments(productId) {
+        return await Product.findById(productId).select('comments')
+}
 
 
 module.exports = {
@@ -54,5 +70,7 @@ module.exports = {
     updateProduct,
     deleteProduct,
     getMostRated,
-    getByOwner
+    getByOwner,
+    addComment,
+    getProductComments
 }
