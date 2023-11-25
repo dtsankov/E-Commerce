@@ -13,8 +13,13 @@ export const getAll = async (productId) => {
 
 };
 
-export const create = async (comment, productId,) => {
-    const result = await request.put(`${baseUrl}/add-comment/${productId}`, comment );
+export const update = async (comment, productId,) => {
+    try {
+        const result = await request.put(`${baseUrl}/add-comment/${productId}`, comment );
+        return result;
+    } catch (error) {
+        console.error('Error creating comment:', error);
+        throw error;
+    }
 
-    return result;
 };

@@ -1,6 +1,9 @@
 import { useEffect, useReducer } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
+import { toast } from "react-toastify";
+
+
 import { productServiceFactory } from '../../services/productService';
 import * as commentService from '../../services/commentService';
 import { useService } from '../../hooks/useService';
@@ -18,28 +21,29 @@ import { productReducer } from '../../reducers/productReducer';
     const navigate = useNavigate();
 
     
-    useEffect(() => {
+   useEffect(() => {
         productService.getOne(productId)
         .then((productData) => {
             const productState = {
                 ...productData,
             };
-            dispatch({type: 'PRODUCT_FETCH', payload: productState})
+            dispatch({type: 'PRODUCT_FETCH', payload: productData })// tova da e productData})
         })
     }, [productId]);
 
     const onCommentSubmit = async (values) => {
+
         const comment = {
             userId: userId,
             author: userEmail,
             text: values.comment,
         }
-        const response = await commentService.create(comment,productId);
+        const newComment = await commentService.update(comment,productId);
+        toast.success('Comment successfully added')
 
         dispatch({
-            type: 'COMMENT_ADD',
-            payload: response,
-            userEmail,
+            type: 'PRODUCT_FETCH',
+            payload: newComment,
         });
     };
 
@@ -106,14 +110,3 @@ import { productReducer } from '../../reducers/productReducer';
 export default ProductDetails;
 
 
-/* Promise.all([
-    productService.getOne(productId),
-    commentService.getAll(productId),
-]).then(([productData, comments]) => {
-    const productState = {
-        ...productData,
-        comments,
-    };
-    
-    dispatch({type: 'PRODUCT_FETCH', payload: productState})
-}); */

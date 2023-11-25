@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createContext } from "react";
+import { toast } from "react-toastify";
+
 
 
 
@@ -27,6 +29,8 @@ export const ProductProvider = ({children}) =>{
         const newProduct = await productService.create(productData, userId);
   
         setProducts(state => [...state, newProduct]);
+
+        toast.success('Product created successfully');
   
         navigate('/');
     };
@@ -35,6 +39,9 @@ export const ProductProvider = ({children}) =>{
         const result = await productService.edit(values._id, values);
   
         setProducts(state => state.map(x => x._id === values._id ? result : x))
+
+        toast.success('Product edited successfully');
+
   
         navigate(`/catalog/${values._id}`);
     }

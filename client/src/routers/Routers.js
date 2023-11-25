@@ -29,7 +29,7 @@ import Watches from '../components/Product Pages/Watches'
 import Phones from '../components/Product Pages/Phones' */
 
 
-import ProtectedRoute from './ProtectedRoute';
+import {ProtectedRoute, ProtectedAuthRoute} from './ProtectedRoute';
 
 /* import AllProducts from '../admin/YourProducts';
 
@@ -69,8 +69,10 @@ const {
             <Route path='wireless' element={<Wireless />} /> */}
 
             {/* login & sign */}
-            <Route path='signup' element={<Register />} />
-            <Route path='login' element={<Login />}/>
+            <Route path='/*' element={<ProtectedAuthRoute />}>
+                <Route path='signup' element={<Register />} />
+                <Route path='login' element={<Login />}/>
+            </Route>
             <Route path='logout' element={<Logout />}/>
         </Routes>
     );

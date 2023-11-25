@@ -46,14 +46,22 @@ async function getByOwner(id) {
 }
 // Comment requests handle
 
-async function addComment(productId,comment) {
+async function addComment(productId, comment) {
     try {
-        const product = await Product.findById(productId)
+        const product = await Product.findById(productId);
+        
         let commentsArray = product.comments;
-        commentsArray.push(comment)
-        await Product.findByIdAndUpdate(productId, { comments: commentsArray })
+
+        commentsArray.push(comment);
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+                productId,
+             { comments: commentsArray },
+             { new: true });
+             
+        return updatedProduct;
     } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
     }
 }
 

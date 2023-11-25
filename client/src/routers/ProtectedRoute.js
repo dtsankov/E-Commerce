@@ -2,6 +2,8 @@ import React from 'react'
 import { getSession } from '../session/session'
 import { Navigate } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import { toast } from "react-toastify";
+
 
 
 
@@ -10,4 +12,13 @@ const ProtectedRoute = ( ) => {
     return currentUser ? <Outlet /> : <Navigate to='/login' />
 }
 
-export default ProtectedRoute;
+const ProtectedAuthRoute = () =>{
+    const currentUser = getSession()
+    toast.error('You are already logged in')	
+    return currentUser ?<Navigate to='/' /> : <Outlet /> 
+}
+
+export {
+    ProtectedRoute,
+    ProtectedAuthRoute
+};
