@@ -57,6 +57,9 @@ import { productReducer } from '../../reducers/productReducer';
         navigate('/catalog');
     };
 
+   
+
+
     return (
         <section id="game-details">
             <h1>Product Details</h1>

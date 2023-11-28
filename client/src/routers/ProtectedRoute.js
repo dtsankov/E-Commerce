@@ -14,8 +14,8 @@ const ProtectedRoute = ( ) => {
 
 const ProtectedAuthRoute = () =>{
     const currentUser = getSession()
-    toast.error('You are already logged in')	
-    return currentUser ?<Navigate to='/' /> : <Outlet /> 
+    
+    return currentUser ? (toast.error('You are already logged in') && <Navigate to='/' />) : <Outlet /> 
 }
 
 export {

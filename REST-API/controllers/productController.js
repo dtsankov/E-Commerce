@@ -13,6 +13,7 @@ const { updateUserProducts } = require("../services/userServices");
 
 const productController = require("express").Router();
 
+
 //create Product
 productController.post("/create", async (req, res) => {
   try {
@@ -29,6 +30,7 @@ productController.post("/create", async (req, res) => {
     res.status(400).json({ error: 'Error creating product!' });
   }
 });
+
 
 //get All Products
 productController.get("/", async (req, res) => {

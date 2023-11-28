@@ -40,10 +40,14 @@ export const ProductProvider = ({children}) =>{
   
         setProducts(state => state.map(x => x._id === values._id ? result : x))
 
-        toast.success('Product edited successfully');
+        toast.success('Product created successfully');
 
   
         navigate(`/catalog/${values._id}`);
+    }
+
+    const onSetProducts = (value) =>{
+        setProducts(value)
     }
 
 
@@ -53,7 +57,7 @@ const productContextValue = {
     onCreateProductSubmit,
     onProductEditSubmit,
     products,
-    setProducts,
+    onSetProducts,
 
 }
     return(

@@ -1,7 +1,14 @@
 //React related imports
 import { useContext } from 'react';
 import {Link} from "react-router-dom";	
-import { AuthContext } from '../../contexts/AuthContext';     
+
+
+import { AuthContext } from '../../contexts/AuthContext'; 
+import { ProductContext } from '../../contexts/ProductContext';
+import { productServiceFactory } from '../../services/productService';
+import { getSession } from '../../session/session';
+
+
 
 //Font Awesome Fonts and Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +31,19 @@ import { ProfileButton } from "./components/ProfileButton";
 
  const Header = () =>{
    const { isAuthenticated } = useContext(AuthContext);
+   const {products, onSetProducts } = useContext(ProductContext);
+   const productService = productServiceFactory(getSession()?.accessToken);
+
+
+
+   const onProductSearchSubmit = async (values) => {
+
+      const result = await productService.getAll();
+      const filteredProducts = result.filter(product => product.brand.toLowerCase().includes(values.search.toLowerCase()));
+      console.log(filteredProducts);
+      onSetProducts(state =>  [...filteredProducts]);
+
+  }
 
 
     return (
@@ -47,7 +67,7 @@ import { ProfileButton } from "./components/ProfileButton";
                <div className="container-wrapper-top-middle">
 
                   <div className="component-wrapper">
-                     <Search/>
+                     <Search onProductSearchSubmit={onProductSearchSubmit} />
                   </div>
 
                </div>

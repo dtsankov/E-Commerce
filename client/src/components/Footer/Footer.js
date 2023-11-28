@@ -28,16 +28,16 @@ import logo from '../../resources/images/logo.png'
             <h4 className='quick-links-title'>Top Tools and Hardware</h4>
             <ListGroup>
               <ListGroupItem>
-                <Link to='/drill-machines'>Drill machines</Link>
+                <Link to='/catalog/drill-machines'>Drill machines</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='/electrical-screwdrivers'>Electrical screwdrivers</Link>
+                <Link to='/catalog/electrical-screwdrivers'>Electrical screwdrivers</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='/rechargable-kits'>Rechargable kits</Link>
+                <Link to='/catalog/rechargable-kits'>Rechargable kits</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='/jig-saws'>Jig saws</Link>
+                <Link to='/catalog/jig-saws'>Jig saws</Link>
               </ListGroupItem>
               <ListGroupItem>
                 <Link to='/grinders'>Grinders</Link>

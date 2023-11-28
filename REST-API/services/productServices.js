@@ -11,7 +11,10 @@ async function addProduct(product, id) {
     }
 }
 async function getAllProducts() {
+
     return await Product.find({})
+
+    
 } 
    
 

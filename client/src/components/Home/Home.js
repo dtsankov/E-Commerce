@@ -9,19 +9,21 @@ import { ProductContext } from "../../contexts/ProductContext";
 
 
  const Home = ({
-    products
+    
  }) => {
+     const {products,onSetProducts} = useContext(ProductContext);
      
      useEffect(() => {
          productService.getAll()
          .then(result => {
-             setProducts(result)
+            onSetProducts(state => [...result])
             })
         }, []);
         
-    const {setProducts} = useContext(ProductContext);
     const productService = productServiceFactory(getSession()?.accessToken); //auth.accessToken
 
+
+    
 
     return(
         <Catalog products={products}/>
