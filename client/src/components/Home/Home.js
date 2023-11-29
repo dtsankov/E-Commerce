@@ -8,9 +8,7 @@ import { ProductContext } from "../../contexts/ProductContext";
 
 
 
- const Home = ({
-    
- }) => {
+ const Home = () => {
      const {products,onSetProducts} = useContext(ProductContext);
      
      useEffect(() => {

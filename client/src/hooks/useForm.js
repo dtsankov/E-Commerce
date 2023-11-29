@@ -1,8 +1,8 @@
 import { useState} from 'react';
 
-export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
+export const useForm = (initialValues, initialErrors, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
-    const [errors, setErrors] = useState(initialErrors);
+    const [errors, setErrors] = useState({});
 
   
 
@@ -44,6 +44,8 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
           setErrors(state => ({...state, [e.target.name]: ""}));
     }
 
+   
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -54,7 +56,6 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
     };
 
     const changeValues = (newValues) => {
-        // TODO: Validate newValues shape (like initialValues)
         
         setValues(newValues);
     };
@@ -72,34 +73,3 @@ export const useForm = (initialValues,initialErrors, onSubmitHandler) => {
 };
 
 
-/* 
-  
-    
-      const validatePassword = () => {
-      
-      };
-
-
-    
-    
-        const isEmailValid = validateEmail();
-        const isPasswordValid = validatePassword();
-    
-        if (isEmailValid && isPasswordValid) {
-        try {
-            
-            const result = await authService.login(email, password);
-
-            console.log(result);
-
-            if (result && result._id) {
-            
-                userHandler(result)
-
-                navigate('/profile');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-     
- */

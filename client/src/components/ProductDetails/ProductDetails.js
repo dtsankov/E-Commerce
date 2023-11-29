@@ -27,7 +27,7 @@ import { productReducer } from '../../reducers/productReducer';
             const productState = {
                 ...productData,
             };
-            dispatch({type: 'PRODUCT_FETCH', payload: productData })// tova da e productData})
+            dispatch({type: 'PRODUCT_FETCH', payload: productState })// tova da e productData})
         })
     }, [productId]);
 

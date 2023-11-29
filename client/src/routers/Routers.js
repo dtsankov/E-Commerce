@@ -15,6 +15,7 @@ import Shop from '../pages/Shop' */
 import Register from '../components/Register/Register'
 import Login from '../components/Login/Login'
 import Profile from '../components/Profile/Profile';
+import EditProduct from '../components/EditProduct/EditProduct';
 import {Logout}  from '../components/Header/components/Logout';
 
 
@@ -38,8 +39,6 @@ import {ProtectedRoute, ProtectedAuthRoute} from './ProtectedRoute';
 const Routers = () => {
 
 const {
-    onCreateProductSubmit,
-    onProductEditSubmit,
     products   
     } = useContext(ProductContext);
 
@@ -48,6 +47,7 @@ const {
             {/* default pages */}
             <Route path='/' element={<Home products={products} />} />
             <Route path='/catalog/:productId' element={<ProductDetails />} />
+            <Route path='/catalog/:productId/edit' element={<EditProduct />} />
           {/*   <Route path='shop' element={<Shop />} />
             
             <Route path='cart' element={<Cart />} />
@@ -56,7 +56,7 @@ const {
             {/* admin pages */}
 
             <Route path='/*' element={<ProtectedRoute />}>
-                <Route path='profile' element={<Profile onCreateProductSubmit={onCreateProductSubmit} onProductEditSubmit={onProductEditSubmit}/>} />
+                <Route path='profile' element={<Profile />} />
                 {/* <Route path='checkout' element={<Checkout />} />  */}
             </Route>
             {/* products items */}

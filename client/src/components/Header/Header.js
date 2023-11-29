@@ -31,7 +31,7 @@ import { ProfileButton } from "./components/ProfileButton";
 
  const Header = () =>{
    const { isAuthenticated } = useContext(AuthContext);
-   const {products, onSetProducts } = useContext(ProductContext);
+   const {onSetProducts } = useContext(ProductContext);
    const productService = productServiceFactory(getSession()?.accessToken);
 
 
@@ -40,7 +40,6 @@ import { ProfileButton } from "./components/ProfileButton";
 
       const result = await productService.getAll();
       const filteredProducts = result.filter(product => product.brand.toLowerCase().includes(values.search.toLowerCase()));
-      console.log(filteredProducts);
       onSetProducts(state =>  [...filteredProducts]);
 
   }

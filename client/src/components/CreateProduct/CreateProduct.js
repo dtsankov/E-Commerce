@@ -1,15 +1,18 @@
-import { useContext } from 'react';
+import {React, useContext } from 'react';
+import { Form, Button, Container} from 'react-bootstrap';
+
 import { useForm } from '../../hooks/useForm';
+
 import { AuthContext } from '../../contexts/AuthContext';
-import { toast } from "react-toastify";
+import {ProductContext} from '../../contexts/ProductContext'
 
 
 
 
- const CreateProduct = ({
-    onCreateProductSubmit,
-}) => {
+ const CreateProduct = () => {
     const {userId} = useContext(AuthContext)
+    const {onCreateProductSubmit} = useContext(ProductContext)
+
     const { values, changeHandler, onSubmit } = useForm({
         userId: userId,
         title: '',
@@ -21,59 +24,105 @@ import { toast } from "react-toastify";
         description:'',
     }, {} , onCreateProductSubmit);
 
+
     return (
-        <section id="create-page" className="auth">
-            <form id="create" method="post" onSubmit={onSubmit}>
-                <div className="container">
-                    <h1>Create Product</h1>
+<section id="create-page" className="auth">
+    <Form id="create" method="post" onSubmit={onSubmit}>
+      <Container>
+        <h1>Create Product</h1>
 
-                    <label htmlFor="leg-title">Machine title:</label>
-                    <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Enter game title..." />
+        <Form.Group controlId="title">
+          <Form.Label>Product title:</Form.Label>
+          <Form.Control
+            type="text"
+            value={values.title}
+            onChange={changeHandler}
+            placeholder="Enter game title..."
+            name="title"
+          />
+        </Form.Group>
 
-                    <label htmlFor="brand">Brand:</label>
-                    <input value={values.brand} onChange={changeHandler} type="text" id="brand" name="brand" placeholder="Enter game category..." />
+        <Form.Group controlId="brand">
+          <Form.Label>Brand:</Form.Label>
+          <Form.Control
+            type="text"
+            value={values.brand}
+            onChange={changeHandler}
+            placeholder="Enter game category..."
+            name="brand"
+          />
+        </Form.Group>
 
-                    <label htmlFor="category">Category:</label>
-                    <select
-                        id="category"
-                        name="category"
-                        value={values.category}
-                        onChange={changeHandler}
-                        >
-                        <option value="">Select...</option>
-                        <option value="Drill machines">Drill machines</option>
-                        <option value="Electrical screwdrivers">Electrical screwdrivers</option>
-                        <option value="Rechargable kits">Rechargable kits</option>
-                        <option value="Jig saws">Jig saws</option>
-                        <option value="Grinders">Grinders</option>
-                        <option value="Hand tools">Hand tools</option>
-                    </select>
+        <Form.Group controlId="category">
+          <Form.Label>Category:</Form.Label>
+          <Form.Control
+            as="select"
+            value={values.category}
+            onChange={changeHandler}
+            name="category"
+          >
+            <option value="">Select...</option>
+            <option value="Drill machines">Drill machines</option>
+            <option value="Electrical screwdrivers">Electrical screwdrivers</option>
+            <option value="Rechargable kits">Rechargable kits</option>
+            <option value="Jig saws">Jig saws</option>
+            <option value="Grinders">Grinders</option>
+            <option value="Hand tools">Hand tools</option>
+          </Form.Control>
+        </Form.Group>
 
-                    <label htmlFor="weigth">Weight:</label>
-                    <input value={values.weigth} onChange={changeHandler} type="text" id="weigth" name="weigth" placeholder="1-100kg" />
+        <Form.Group controlId="weigth">
+          <Form.Label>Weight:</Form.Label>
+          <Form.Control
+            type="text"
+            value={values.weigth}
+            onChange={changeHandler}
+            placeholder="1-100kg"
+            name="weigth"
+          />
+        </Form.Group>
 
-                    <label htmlFor="price">Price:</label>
-                    <input value={values.price} onChange={changeHandler} type="text" id="price" name="price" placeholder="0-1000 лв." />
+        <Form.Group controlId="price">
+          <Form.Label>Price:</Form.Label>
+          <Form.Control
+            type="text"
+            value={values.price}
+            onChange={changeHandler}
+            placeholder="0-2000 EUR"
+            name="price"
+          />
+        </Form.Group>
 
-                    <label htmlFor="description">Image:</label>
-                    <textarea
-                        value={values.description}
-                        onChange={changeHandler}
-                        type="text"
-                        id="imageUrl"
-                        name="description"
-                        placeholder="Short summary..."
-                        rows="4" 
-                        cols="50" 
-                    ></textarea>
+        <Form.Group controlId="description">
+          <Form.Label>Image:</Form.Label>
+          <Form.Control
+            as="textarea"
+            value={values.description}
+            onChange={changeHandler}
+            placeholder="Short summary..."
+            rows="4"
+            cols="50"
+            name="description"
+          />
+        </Form.Group>
 
-                    <label htmlFor="game-img">Description:</label>
-                    <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
+        <Form.Group controlId="imageUrl">
+          <Form.Label>Description:</Form.Label>
+          <Form.Control
+            type="text"
+            value={values.imageUrl}
+            onChange={changeHandler}
+            placeholder="Upload a photo..."
+            name="imageUrl"
+          />
+        </Form.Group>
 
-                    <input className="btn submit" type="submit" value="Create Game" />
-                </div>
-            </form>
-        </section>
+        <Button className="btn submit" type="submit">
+          Create Product
+        </Button>
+      </Container>
+    </Form>
+</section>
     );
 };
 
