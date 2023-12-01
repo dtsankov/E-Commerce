@@ -1,0 +1,22 @@
+
+.container-wrapper{
+    max-width: 30em;
+    display: flex;
+}
+
+.carousle-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+
+.bg-dark.text-white.card {
+    border-radius: 1em;
+    background-color: white !important;
+}
+.card-img{
+   max-width: 30em;
+    max-height: 20em;
+    object-fit:fill;
+    padding: 3em;
+}

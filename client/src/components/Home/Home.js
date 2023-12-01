@@ -5,6 +5,7 @@ import { productServiceFactory } from '../../services/productService';
 import { getSession } from '../../session/session';
 import { Catalog } from "./Catalog/Catalog";
 import { ProductContext } from "../../contexts/ProductContext";
+import { HeroBanner } from "./HeroBanner/HeroBanner";
 
 
 
@@ -24,7 +25,10 @@ import { ProductContext } from "../../contexts/ProductContext";
     
 
     return(
+        <>
+        <HeroBanner/>
         <Catalog products={products}/>
+        </>
     )
 }
 

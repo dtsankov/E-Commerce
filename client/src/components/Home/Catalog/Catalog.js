@@ -1,4 +1,4 @@
-import { CatalogItem } from "./components/CatalogItem";
+import { CatalogItem } from "./CatalogItem/CatalogItem";
 
 export const Catalog = ({
     products,
