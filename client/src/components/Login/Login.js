@@ -8,7 +8,6 @@ import {Link} from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
 
-import loginImage from '../../resources/images/login.jpg';
 import {FaFacebook } from 'react-icons/fa'
 import { SiGoogle } from 'react-icons/si';
 

@@ -6,8 +6,6 @@ import {Link} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
 import {useForm} from "../../hooks/useForm";
 
-import loginImage from '../../resources/images/login.jpg';
-
 
 //Bootstrap imports
 import Button from 'react-bootstrap/Button';
