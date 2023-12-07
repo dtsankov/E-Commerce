@@ -1,22 +1,76 @@
-
-.container-wrapper{
+/* ImageCardItem */
+.container-wrapper {
     max-width: 30em;
     display: flex;
 }
 
-.carousle-wrapper{
+.carousle-wrapper {
     display: flex;
     justify-content: center;
 }
 
-
 .bg-dark.text-white.card {
     border-radius: 1em;
     background-color: white !important;
+    min-width: 26em;
+    min-height: 21em;
+    max-width: 26em;
+    max-height: 21em;
 }
-.card-img{
-   max-width: 30em;
+
+ .card-title.h5{
+    color: black;
+    text-align: center;
+}
+
+.card-img {
+    max-width: 30em;
     max-height: 20em;
-    object-fit:fill;
+    object-fit: fill;
     padding: 3em;
 }
+
+.hero-banner-section .container{
+    max-width: 100%;
+    min-height: 19em;
+}
+
+.hero-banner-section .container nav{
+    display: flex;
+    justify-content: center;
+    gap: 7em;
+    padding-top: 2em;
+}
+
+.hero-banner-section .container nav li {
+     list-style: none;
+
+}
+
+.hero-banner-section .container nav li a {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #111041;
+    transition: color 0.2s;
+}
+
+.hero-banner-section .container nav li:hover {
+    scale: 1.1;
+}
+
+.hero-banner-section .container nav li a:hover {
+    color: #f18e18;
+}
+
+.swiper{
+    padding: 1.6em;
+}
+
+.card-img-overlay{
+display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+

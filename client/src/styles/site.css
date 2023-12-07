@@ -17,7 +17,9 @@
 
 @import url('../components/Profile/profile.css');
 
-@import url('../components/Home/Home.css')
+@import url('../components/Home/Home.css');
+
+@import url('../components/Home/Catalog/catalog.css')
 
 
 

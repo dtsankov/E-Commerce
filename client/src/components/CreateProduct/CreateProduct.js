@@ -94,7 +94,7 @@ import {ProductContext} from '../../contexts/ProductContext'
         </Form.Group>
 
         <Form.Group controlId="description">
-          <Form.Label>Image:</Form.Label>
+          <Form.Label>Description:</Form.Label>
           <Form.Control
             as="textarea"
             value={values.description}
@@ -107,7 +107,7 @@ import {ProductContext} from '../../contexts/ProductContext'
         </Form.Group>
 
         <Form.Group controlId="imageUrl">
-          <Form.Label>Description:</Form.Label>
+          <Form.Label>Image:</Form.Label>
           <Form.Control
             type="text"
             value={values.imageUrl}

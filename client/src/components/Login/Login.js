@@ -44,16 +44,8 @@ const LoginFormErrors = {
     return(
     <section className="login-section">
         <div className="container">
-            <div className="title-wrapper">
-                    <h2>A<span>-Z</span></h2>
-                    <h2>Construction</h2>
-            </div>
             <div className="container-wrapper">
                
-                <div className="form-image-wrapper">
-                        <img src={loginImage}  alt="loginImg" />
-                </div>
-
                 <div className="form-wrapper">
                     <div className="inner-wrapper">
                         <h3>Sign In</h3>

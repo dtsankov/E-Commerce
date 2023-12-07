@@ -1,41 +1,20 @@
-import React, { useEffect, useState } from 'react';
- 
-import { useService } from "../../../hooks/useService";
-import { productServiceFactory } from "../../../services/productService"
+import { Link } from "react-router-dom"
+
+export const HeroBanner  = () => { 
 
 
-import Carousel from 'react-bootstrap/Carousel';
-import { ImageCardItem } from './ImageCardItem/ImageCardItem';
-
-export const HeroBanner = () => { 
-    const productService = useService(productServiceFactory);
-    const [latestProducts, setLatestProducts] = useState([]);
-
-    useEffect(() => {
-        // Fetch the latest 3 products or adjust as needed
-        productService.getAll()
-          .then((products) => {
-            setLatestProducts(products.slice(0,2));
-          })
-          .catch((error) => {
-            console.error('Error fetching latest products:', error);
-          });
-      }, []);
-
-    return (
-    <Carousel fade>
-     {latestProducts.slice(0,2).map((product) => (
-        <Carousel.Item key={product._id}>
-                <ImageCardItem product={product} />
-            <Carousel.Caption>
-                {/* <h3>{product.title}</h3>
-                <p>{product.description}</p> */}
-            </Carousel.Caption>
-        </Carousel.Item>
-      ))}
-    </Carousel>
-  );
+    return(
+    <section className="hero-banner-section">
+        <div className="container">
+            <nav>
+                <li><Link to='/catalog/drill-machines'>Drill machines</Link></li>
+                <li><Link to='/catalog/electrical-screwdrivers'>Electrical screwdrivers</Link></li>
+                <li><Link to='/catalog/rechargable-kits'>Rechargable kits</Link></li>
+                <li><Link to='/catalog/jig-saws'>Jig saws</Link></li>
+                <li><Link to='/catalog/grinders'>Grinders</Link></li>
+                <li><Link to='/catalog/hand-tools'>Hand tools</Link></li>
+            </nav>
+        </div>
+    </section>    
+    )
 }
-
-
-

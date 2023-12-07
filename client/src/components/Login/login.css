@@ -1,21 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
 
 .login-section .container-wrapper {
-    padding: 7em 0 0 0;
+    padding: 19em 0 0 0;
     margin: 0 auto;
     max-width: 81em;
     display: flex;
-    gap: 5em;
+    justify-content: center;
 }
 
 .form-wrapper {
     padding: 0 6em;
-    border-left: 1px solid #f18e18;
 }
 
 .form-wrapper form {
-    min-width: 21em;
-    min-height: 24em;
+    min-width: 26em;
 }
 
 .form-image-wrapper img {
@@ -40,7 +38,7 @@
     display: flex;
     align-items: center;
     margin: 20px 0;
-    max-width: 17em;
+    max-width: 23em;
 }
 
 .border-line {
@@ -61,6 +59,6 @@
 .inner-wrapper a {
     color: #0d6efd;
     padding-top: 0.4em;
-    padding-right: 4em;
+    padding-right: 5em;
     text-decoration: none;
 }

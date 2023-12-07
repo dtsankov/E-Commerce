@@ -4,7 +4,7 @@
 
 .section-top-bar .section-container-wrapper {
     display: flex;
-    padding: 3em 0;
+    padding-top: 3em;
     gap: 3em;
 }
 
@@ -21,7 +21,7 @@
 
 .container-wrapper-top-right .component-wrapper {
     text-align: center;
-    padding: 1.5em 2em;
+    padding: 1.5em 2em 0 2em;
 }
 
 

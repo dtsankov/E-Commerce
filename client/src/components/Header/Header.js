@@ -1,6 +1,6 @@
 //React related imports
 import { useContext } from 'react';
-import {Link} from "react-router-dom";	
+import {Link, useNavigate} from "react-router-dom";	
 
 
 import { AuthContext } from '../../contexts/AuthContext'; 
@@ -36,10 +36,11 @@ import { ProfileButton } from "./components/ProfileButton";
 
 
 
+
    const onProductSearchSubmit = async (values) => {
 
       const result = await productService.getAll();
-      const filteredProducts = result.filter(product => product.brand.toLowerCase().includes(values.search.toLowerCase()));
+      const filteredProducts = result.filter(product => product.title.toLowerCase().includes(values.search.toLowerCase()));
       onSetProducts(state =>  [...filteredProducts]);
 
   }
