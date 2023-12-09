@@ -17,16 +17,12 @@ const productController = require("express").Router();
 //create Product
 productController.post("/create", async (req, res) => {
   try {
-    const data = Object.assign({ _ownerId: req?.user?._id }, req.body)
-    const userId = req?.user?._id;
-
-    const product = await addProduct(data, userId);
-
-    await updateUserProducts(data._ownerId, product._id);
-
+    req.body['_ownerId'] = req.user._id;
+    const product = await addProduct(req.body, req.user._id);
+    await updateUserProducts(req.body._ownerId, product._id);
     res.status(201).json(product);
   } catch (error) {
-    res.status(400).json({ error: 'Error creating product!' });
+    return res.status(400).json(error.message);
   }
 });
 

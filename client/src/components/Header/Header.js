@@ -41,7 +41,7 @@ import { ProfileButton } from "./components/ProfileButton";
    const onProductSearchSubmit = async (values) => {
 
       const result = await productService.getAll();
-      const filteredProducts = result.filter(product => product.title.toLowerCase().includes(values.search.toLowerCase()));
+      const filteredProducts = result.filter(product => product.title.toLowerCase().includes(values.toLowerCase()));
       onSetProducts(state =>  [...filteredProducts]);
       navigate('/')
 
