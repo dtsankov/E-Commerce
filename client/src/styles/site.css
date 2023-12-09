@@ -19,7 +19,10 @@
 
 @import url('../components/Home/Home.css');
 
-@import url('../components/Home/Catalog/catalog.css')
+@import url('../components/Home/Catalog/catalog.css');
+
+@import url('../components/ProductDetails/productDetails.css');
+
 
 
 

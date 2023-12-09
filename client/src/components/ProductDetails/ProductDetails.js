@@ -27,7 +27,7 @@ import { productReducer } from '../../reducers/productReducer';
             const productState = {
                 ...productData,
             };
-            dispatch({type: 'PRODUCT_FETCH', payload: productState })// tova da e productData})
+            dispatch({type: 'PRODUCT_FETCH', payload: productState })
         })
     }, [productId]);
 
@@ -54,58 +54,67 @@ import { productReducer } from '../../reducers/productReducer';
 
         // TODO: delete from state
 
-        navigate('/catalog');
+        navigate('/');
     };
 
    
 
 
     return (
-        <section id="game-details">
-            <h1>Product Details</h1>
-            <div className="info-section">
+        <section id="product-details">
 
-                <div className="product-header">
-                    <img className="game-img" src={product.imageUrl} alt='' />
-                    <h1>{product.title}</h1>
-                    <span className="brand">Brand: {product.brand}</span>
-                    <p className="type">Category: {product.category}</p>
-                </div>
+            <div className="container">
 
-                <p className="weigth">Weigth: {product.weigth}</p>
+                <h1>Product Details</h1>
 
-                <p className="price">Price: {product.price} EUR</p>
+                <div className="info-section">
+                    <div className='info-wrapper'>
+                        <div className="product-img-section">
+                            <img className="details-img" src={product.imageUrl} alt='' />
+                        </div>
 
-                <p className="description">Description: {product.description}</p>
+                        <div className='product-details-section'>
+                            <h1>{product.title}</h1>
+                            <span className="brand">Brand: {product.brand}</span>
+                            <p className="type">Category: {product.category}</p>
 
+                            <p className="weigth">Weigth: {product.weigth}</p>
 
+                            <p className="price">Price: {product.price} EUR</p>
 
-                <div className="details-comments">
-                    <h2>Comments:</h2>
-                    <ul>
-                        {product.comments && product.comments.map(x => (
-                            
-                            <li key={x._id}  className="comment">
+                            <p className="description">Description: {product.description}</p>
+                        </div>
+                    </div>
+
+                    <div className='comments-wrapper'>
+                    <div className="details-comments">
+                        <h2>Comments:</h2>
+                        <ul>
+                            {product.comments && product.comments.map(x => (
                                 
-                                <p>{x.author}: {x.text}</p>
-                            </li>
-                        ))}
-                    </ul>
+                                <li key={x._id}  className="comment">
+                                    
+                                    <p>{x.author}: {x.text}</p>
+                                </li>
+                            ))}
+                        </ul>
 
-                    {!product.comments?.length && (
-                        <p className="no-comment">No comments.</p>
+                        {!product.comments?.length && (
+                            <p className="no-comment">No comments.</p>
+                        )}
+                    </div>
+
+                    {isOwner && (
+                        <div className="buttons">
+                            <Link to={`/catalog/${product._id}/edit`} className="button">Edit</Link>
+                            <button className="button" onClick={onDeleteClick}>Delete</button>
+                        </div>
                     )}
                 </div>
 
-                {isOwner && (
-                    <div className="buttons">
-                        <Link to={`/catalog/${product._id}/edit`} className="button">Edit</Link>
-                        <button className="button" onClick={onDeleteClick}>Delete</button>
-                    </div>
-                )}
+                {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
+                </div>
             </div>
-
-            {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
         </section>
     );
 };

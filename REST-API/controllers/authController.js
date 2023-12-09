@@ -10,7 +10,6 @@ authController.post("/register", async (req, res) => {
     const user = await register(email, password);
     res.status(200).json(user);
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
   res.end();
@@ -48,7 +47,6 @@ authController.put("/profile/edit", async (req, res) => {
     const updatedUser = await updateUser(user, req.body);
     res.status(200).json(updatedUser);
   } catch (err) {
-    console.log(err);
     res.status(400).json({ error: err.message });
   }
 });

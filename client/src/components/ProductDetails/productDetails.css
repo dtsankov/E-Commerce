@@ -1,0 +1,30 @@
+#product-details{
+    background-color: #ccc;
+}
+
+.product-img-section{
+    max-width: 48em;
+    min-height: 55em;
+    padding: 2em;
+    margin: 2em;
+    border-radius: 2em;
+}
+
+.details-img{
+    border-radius: 1em;
+}
+
+.info-section{
+    border: 1px solid black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-wrapper{
+    display: flex;
+}
+
+.product-details-section{
+    padding-top: 8em ;
+}

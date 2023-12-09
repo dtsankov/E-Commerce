@@ -26,7 +26,6 @@ productController.post("/create", async (req, res) => {
 
     res.status(201).json(product);
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: 'Error creating product!' });
   }
 });
@@ -55,7 +54,6 @@ productController.get("/:id", async (req, res) => {
       throw new Error("Invalid Product ID!");
     }
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 });
@@ -73,7 +71,6 @@ productController.put("/edit/:id", async (req, res) => {
     const result = await updateProduct(req.params.id, req.body);
     res.status(200).json(result);
   } catch (err) {
-    console.log(err);
     res.status(400).json({ error: err.message });
   }
 });
