@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
 
+.login-section {
+    background-color: #f5f5f5;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../resources/images/tape-measure-on-wood.jpg);
+    max-height: 100vh;
+}
+
 .login-section .container-wrapper {
     padding: 19em 0 0 0;
     margin: 0 auto;
