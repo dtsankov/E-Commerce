@@ -30,16 +30,27 @@
     padding: 3em;
 }
 
+
+.hero-banner-section{
+    background-color: #f5f5f5;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    background-image: url(../../resources/images/tape-measure-on-wood.jpg);
+    max-height:100vh;
+  }
+
 .hero-banner-section .container{
     max-width: 100%;
-    min-height: 19em;
+    min-height: 30em;
 }
 
 .hero-banner-section .container nav{
     display: flex;
     justify-content: center;
-    gap: 7em;
-    padding-top: 2em;
+    gap: 5em;
+    padding:2em 0em 0em 0em;
+    font-size:18px;
 }
 
 .hero-banner-section .container nav li {
@@ -63,9 +74,12 @@
 }
 
 .swiper{
-    padding: 1.6em;
+    padding:5rem;
 }
 
+.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
+    display: none;
+}
 .card-img-overlay{
 display: flex;
   flex-direction: column;

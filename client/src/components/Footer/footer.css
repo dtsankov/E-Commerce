@@ -52,7 +52,6 @@
 }
 
 .footer {
-    margin-top: 15em;
     overflow: hidden;
     border-top: 2px solid rgba(0, 0, 0, 0.228);
     padding: 20px;
@@ -62,6 +61,7 @@
 .logo-text img{
     border-radius: 0.6em ;
 }
+
 
 .logo-text img:hover{
     scale: 1.2;

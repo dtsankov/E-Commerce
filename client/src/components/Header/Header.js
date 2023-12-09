@@ -40,11 +40,10 @@ import { ProfileButton } from "./components/ProfileButton";
 
    const onProductSearchSubmit = async (values) => {
 
+      // console.log(values)
       const result = await productService.getAll();
       const filteredProducts = result.filter(product => product.title.toLowerCase().includes(values.toLowerCase()));
-      onSetProducts(state =>  [...filteredProducts]);
-      navigate('/')
-
+      onSetProducts(state=>[...filteredProducts]);
   }
 
 
@@ -59,7 +58,7 @@ import { ProfileButton } from "./components/ProfileButton";
                <div className="container-wrapper-top-left">
 
                   <div className="component-wrapper">
-                     <div className="logo">
+                     <div className="header-logo">
                         <Link to="/"><img src={logo} alt="" /></Link>
                      </div>
                   </div>

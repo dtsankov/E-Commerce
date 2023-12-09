@@ -5,7 +5,6 @@ import { HeroBanner } from "./HeroBanner/HeroBanner";
 
 
  const Home = ({products}) => {
-
     const pageTitle = 'All Products'
     return(
         <>

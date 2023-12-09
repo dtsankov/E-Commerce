@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { toast } from "react-toastify";
@@ -14,7 +14,6 @@ import { productReducer } from '../../reducers/productReducer';
 
  const ProductDetails = () => {
     const { productId } = useParams();
-
     const { userId, isAuthenticated, userEmail } = useAuthContext();
     const [product, dispatch] = useReducer(productReducer, {});
     const productService = useService(productServiceFactory)
@@ -51,7 +50,6 @@ import { productReducer } from '../../reducers/productReducer';
 
     const onDeleteClick = async () => {
         await productService.delete(product._id);
-
         // TODO: delete from state
 
         navigate('/');
@@ -61,7 +59,7 @@ import { productReducer } from '../../reducers/productReducer';
 
 
     return (
-        <section className="product-details">
+        <section id="product-details">
 
             <div className="container">
 
@@ -75,7 +73,7 @@ import { productReducer } from '../../reducers/productReducer';
 
                         <div className='product-details-section'>
                             <h1>{product.title}</h1>
-                            <p className="brand">Brand: {product.brand}</p>
+                            <span className="brand">Brand: {product.brand}</span>
                             <p className="type">Category: {product.category}</p>
 
                             <p className="weigth">Weigth: {product.weigth}</p>
@@ -83,18 +81,6 @@ import { productReducer } from '../../reducers/productReducer';
                             <p className="price">Price: {product.price} EUR</p>
 
                             <p className="description">Description: {product.description}</p>
-
-                            {isOwner && (
-                        <div className="buttons">
-                            <Link to={`/catalog/${product._id}/edit`} className="button">Edit</Link>
-                            <button className="button" onClick={onDeleteClick}>Delete</button>
-                        </div>
-                    )}
-                    {!isOwner && (
-                        <div className="buttons basket">
-                            <button className="button" onClick={onDeleteClick}>Add to Basket</button>
-                        </div>
-                    )}
                         </div>
                     </div>
 
@@ -116,7 +102,12 @@ import { productReducer } from '../../reducers/productReducer';
                         )}
                     </div>
 
-                   
+                    {isOwner && (
+                        <div className="buttons">
+                            <Link to={`/catalog/${product._id}/edit`} className="button">Edit</Link>
+                            <button className="button" onClick={onDeleteClick}>Delete</button>
+                        </div>
+                    )}
                 </div>
 
                 {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}

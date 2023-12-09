@@ -12,7 +12,6 @@ export const Search = ({ onProductSearchSubmit }) => {
     };
 
     return (
-        <>
         <div className="field-container">
             <input 
                 type="text" 
@@ -23,8 +22,5 @@ export const Search = ({ onProductSearchSubmit }) => {
                 onInput={handleSearch}
             />
         </div>
-        <FontAwesomeIcon icon={faSearch}/> 
-        </>
     )
 }
-
