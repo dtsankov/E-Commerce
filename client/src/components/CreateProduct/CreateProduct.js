@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext} from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 import { useForm } from "../../hooks/useForm";
@@ -10,11 +10,7 @@ const CreateProduct = () => {
     const { userId } = useContext(AuthContext);
     const { onCreateProductSubmit } = useContext(ProductContext);
 
-    useEffect(() => {
-        if (titleError) {
-            console.log(titleError);
-        }
-    }, [titleError]);
+   
 
     const CreateFormKeys = {
         Title: "title",
@@ -27,13 +23,13 @@ const CreateProduct = () => {
     };
 
     const CreateFormErrors = {
-        TitleError: "",
-        BrandError: "",
-        CategoryError: "",
-        WeightError: "",
-        PriceError: "",
-        ImageUrlError: "",
-        DescriptionError: "",
+        TitleError: "title",
+        BrandError: "brand",
+        CategoryError: "category",
+        WeightError: "weight",
+        PriceError: "price",
+        ImageUrlError: "imageUrl",
+        DescriptionError: "description",
     };
 
     const {
@@ -99,11 +95,11 @@ const CreateProduct = () => {
                                     : ""
                             }
                         />
-                        {errors[CreateFormErrors.TitleError] && (
-                            <p>{errors[CreateFormErrors.TitleError]}</p>
-                        )}
+                       <Form.Control.Feedback type="invalid">
+                            {errors[CreateFormErrors.TitleError]}
+                        </Form.Control.Feedback>
                     </Form.Group>
-                    {titleError && <p>{titleError}</p>}
+                    
 
                     <Form.Group
                         className={`mb-3 ${
@@ -188,7 +184,11 @@ const CreateProduct = () => {
                             onChange={changeHandler}
                             onBlur={validateWeightHandler}
                             placeholder="1-100kg"
-                            required
+                            className={
+                                errors[CreateFormErrors.WeightError]
+                                    ? "is-invalid"
+                                    : ""
+                            }
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors[CreateFormErrors.WeightError]}
@@ -211,6 +211,11 @@ const CreateProduct = () => {
                             onChange={changeHandler}
                             onBlur={validatePriceHandler}
                             placeholder="0-2000 EUR"
+                            className={
+                                errors[CreateFormErrors.PriceError]
+                                    ? "is-invalid"
+                                    : ""
+                            }
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors[CreateFormErrors.PriceError]}
@@ -235,6 +240,11 @@ const CreateProduct = () => {
                             placeholder="Short summary..."
                             rows="4"
                             cols="50"
+                            className={
+                                errors[CreateFormErrors.DescriptionError]
+                                    ? "is-invalid"
+                                    : ""
+                            }
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors[CreateFormErrors.DescriptionError]}
@@ -257,6 +267,11 @@ const CreateProduct = () => {
                             onChange={changeHandler}
                             onBlur={validateImageUrlHandler}
                             placeholder="Upload a photo..."
+                            className={
+                                errors[CreateFormErrors.ImageUrlError]
+                                    ? "is-invalid"
+                                    : ""
+                            }
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors[CreateFormErrors.ImageUrlError]}

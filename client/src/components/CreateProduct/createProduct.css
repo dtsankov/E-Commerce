@@ -8,7 +8,7 @@
 
 .create-page .btn.submit {
     margin-top: 2em;
-    margin-left: 6em;
+    margin-left: 7em;
 }
 
 .invalid-feedback {
@@ -17,4 +17,10 @@
 
 .is-invalid {
     color: red;
+}
+
+.create-page h1{
+    color: #f18e18;
+    padding-bottom: 0.7em;
+    text-align: center;
 }

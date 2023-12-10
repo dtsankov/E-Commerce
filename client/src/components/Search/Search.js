@@ -21,6 +21,7 @@ export const Search = ({ onProductSearchSubmit }) => {
                 value={values.search} 
                 onInput={handleSearch}
             />
+             <FontAwesomeIcon icon={faSearch} className="search-icon"/>
         </div>
     )
 }

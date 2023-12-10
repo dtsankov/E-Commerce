@@ -40,10 +40,10 @@ import logo from '../../resources/images/logo.png'
                 <Link to='/catalog/jig-saws'>Jig saws</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='/grinders'>Grinders</Link>
+                <Link to='/catalog/grinders'>Grinders</Link>
               </ListGroupItem>
               <ListGroupItem>
-                <Link to='/hand-tools'>Hand tools</Link>
+                <Link to='/catalog/hand-tools'>Hand tools</Link>
               </ListGroupItem>
 
             </ListGroup>

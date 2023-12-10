@@ -26,14 +26,16 @@ const Profile = ({ onCreateProductSubmit }) => {
                             onCreateProductSubmit={onCreateProductSubmit}
                         />
                     </Tab>
-                    <Tab eventKey="your-products" title="Your Products">
-                        Tab content for Loooonger Tab
+                    <Tab className="your-products" eventKey="your-products" title="Your Products">
+                        In Production...Comming Soon...
                     </Tab>
-                    <Tab eventKey="orders" title="Orders">
-                        Tab content for Contact
+                    <Tab className="orders" eventKey="orders" title="Orders">
+                    In Production...Comming Soon...
+
                     </Tab>
-                    <Tab eventKey="comments" title="Comments">
-                        Tab content for Contact
+                    <Tab className="comments" eventKey="comments" title="Comments">
+                    In Production...Comming Soon...
+
                     </Tab>
                 </Tabs>
             </div>

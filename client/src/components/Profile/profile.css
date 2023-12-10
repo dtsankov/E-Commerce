@@ -20,3 +20,26 @@
     min-width: 20em;
     min-height: 20em;
 }
+
+.your-products, .orders, .comments{
+    text-align: center;
+    padding-top: 8em;
+    font-size: 2em;
+    color: #f18e18;
+}
+
+.field-wrapper { 
+    max-width: 45em;
+    min-height: 50em;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    padding: 2em 4em;
+}
+
+.field-wrapper h2 {
+    color: #f18e18;
+    text-align: center;
+    padding-bottom: 2em;
+}
+

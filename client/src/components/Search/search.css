@@ -8,9 +8,11 @@
     border: 0.2em solid #FFBD10;
     border-radius: 2em;
     min-width: 45em;
+    color: black;
+    text-decoration: none;
 }
 
-.search-bar:active{
+.search-bar:focus-visible{
     border: none;
 }
 
@@ -29,6 +31,17 @@
     background-color: white;
     color: #FFBD10;
  
+ }
+
+ .search-icon { 
+    max-width: 1em;
+    max-height: 1em;
+    padding: 1em;
+    background-color: white;
+    border: 1px solid #FFBD10;
+    color: #FFBD10;
+    font-size: 1.1em;
+    border-radius: 2em;
  }
 
  

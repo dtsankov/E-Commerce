@@ -4,7 +4,7 @@ import { Catalog } from "../Home/Catalog/Catalog"
     products
  }) => {
 
-const currentProducts = products.filter(p=> p.category.toLowerCase() === 'electrical screwdriver')
+const currentProducts = products.filter(p=> p.category.toLowerCase() === 'electrical screwdrivers')
 const pageTitle = 'Electrical Screwdrivers'
     return(
         <Catalog products={currentProducts} pageTitle={pageTitle}/>
