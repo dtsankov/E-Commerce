@@ -1,29 +1,25 @@
+@import url("./reset.css");
 
-@import url('./reset.css');
+@import url("./typography.css");
 
-@import url('./typography.css');
+@import url("./layout.css");
 
-@import url('./layout.css');
+@import url("../components/Search/search.css");
 
-@import url('../components/Search/search.css');
+@import url("../components/Header/header.css");
 
-@import url('../components/Header/header.css');
+@import url("../components/Login/login.css");
 
-@import url('../components/Login/login.css');
+@import url("../components/Footer/footer.css");
 
-@import url('../components/Footer/footer.css');
+@import url("../components/Register/register.css");
 
-@import url('../components/Register/register.css');
+@import url("../components/Profile/profile.css");
 
-@import url('../components/Profile/profile.css');
+@import url("../components/Home/Home.css");
 
-@import url('../components/Home/Home.css');
+@import url("../components/Home/Catalog/catalog.css");
 
-@import url('../components/Home/Catalog/catalog.css');
+@import url("../components/ProductDetails/productDetails.css");
 
-@import url('../components/ProductDetails/productDetails.css');
-
-
-
-
-
+@import url("../components/CreateProduct/createProduct.css");

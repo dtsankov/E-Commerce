@@ -1,28 +1,22 @@
-.profile-section{
+.profile-section {
     padding: 10em 0;
-    background: rgb(233,233,233);
-    background: linear-gradient(90deg, rgba(233,233,233,1) 0%, rgba(155,163,166,1) 54%, rgba(95,99,98,1) 100%); 
-
 }
 
-.profile-section .nav-item:hover .nav-link{
+.profile-section .nav-item:hover .nav-link {
     background-color: #111041;
     color: #f18e18;
 }
 
-.nav-fill .nav-link.active{
+.nav-fill .nav-link.active {
     background-color: #111041;
     color: white;
 }
 
-.profile-section .section-wrapper{
+.profile-section .section-wrapper {
     margin: 12em auto;
 }
 
-.fieldset-wrapper{
+.fieldset-wrapper {
     min-width: 20em;
     min-height: 20em;
-
 }
-
-

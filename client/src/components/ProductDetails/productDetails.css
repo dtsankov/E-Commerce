@@ -1,8 +1,13 @@
-#product-details{
-    background-color: #ccc;
+.product-details {
+    background-color: #eee;
 }
 
-.product-img-section{
+.product-details h1 {
+    text-align: center;
+    padding: 1em 0;
+}
+
+.product-img-section {
     max-width: 48em;
     min-height: 55em;
     padding: 2em;
@@ -10,21 +15,102 @@
     border-radius: 2em;
 }
 
-.details-img{
+.details-img {
     border-radius: 1em;
 }
 
-.info-section{
-    border: 1px solid black;
+.info-section {
     background-color: white;
     display: flex;
     flex-direction: column;
 }
 
-.info-wrapper{
+.info-wrapper {
     display: flex;
 }
 
-.product-details-section{
-    padding-top: 8em ;
+.product-details-section {
+    margin: 5em;
+    background: #eee;
+    padding: 6em 4em 4em 4em;
+    border-radius: 2em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 6em;
+}
+
+.button {
+    padding: 0.5em 3em;
+    background-color: #85c44d;
+    color: white;
+    transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out,
+        color 0.4s ease-in-out;
+}
+
+.buttons a {
+    color: white;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: white;
+    border: 1px solid #85c44d;
+    color: #85c44d;
+}
+
+.comments-wrapper {
+    background-color: #eee;
+    border-radius: 2em;
+    max-width: 50em;
+    margin: 2em;
+}
+
+.comments-wrapper h2 {
+    text-align: center;
+    padding: 1em 0;
+}
+
+.comments-wrapper ul {
+    list-style: none;
+}
+
+.comments-wrapper p {
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+
+.create-comment {
+    background: #eee;
+    max-width: 25em;
+    border-radius: 2em;
+    margin: 1em 13em;
+    padding: 1.7em;
+    text-align: center;
+}
+.create-comment > * {
+    padding: 0.5em;
+}
+
+.btn.submit {
+    color: white;
+    margin-top: 0.5em;
+    padding: 0.5em 1.2em;
+    background-color: #85c44d;
+    border-radius: 1.5em;
+    transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out,
+        color 0.4s ease-in-out;
+}
+
+.btn.submit:hover {
+    background-color: white;
+    border: #85c44d 1px solid;
+    color: #85c44d;
+}
+
+.form textarea {
+    border-radius: 0.5em;
+    padding: 1em;
 }

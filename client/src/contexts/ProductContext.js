@@ -15,9 +15,7 @@ export const ProductProvider = ({ children }) => {
     const [cart, setCart] = useState(getSession()?.cart || []);
     const productService = productServiceFactory(getSession()?.accessToken); //auth.accessToken
 
-    useEffect(() => {
-        console.log(cart);
-    }, [cart]);
+    useEffect(() => {}, [cart]);
 
     const onCreateProductSubmit = async (data) => {
         const { userId, ...productData } = data;

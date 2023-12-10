@@ -1,0 +1,20 @@
+.create-page {
+    max-width: 30em;
+    margin: 4em auto;
+    padding: 4em 2em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+.create-page .btn.submit {
+    margin-top: 2em;
+    margin-left: 6em;
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+.is-invalid {
+    color: red;
+}

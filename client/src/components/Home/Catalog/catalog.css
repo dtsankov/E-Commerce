@@ -1,14 +1,12 @@
-.catalog-page{
+.catalog-page {
     background-color: #eee;
     padding-top: 1em;
-    
 }
 
-
-.catalog-page h1{
-    margin: 1em 0em 0em;    text-align: center;
+.catalog-page h1 {
+    margin: 1em 0em 0em;
+    text-align: center;
     font-size: 4em;
-    
 }
 
 .container-catalog-wrapper {
@@ -21,11 +19,11 @@
     gap: 6em;
     min-height: 34em;
 }
-.card{
+.card {
     transition: scale 0.3s;
 }
 
-.card:hover{
+.card:hover {
     scale: 1.1;
 }
 
@@ -48,22 +46,22 @@
     border: none;
 }
 
-.button.details-button{
+.button.details-button {
     border-radius: 3em;
     border: 1px solid #111041;
     background-color: white;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .button.details-button:hover,
-.button.details-button:hover a{
+.button.details-button:hover a {
     background-color: #111041;
     color: white;
 }
 
-.button.basket-button{
+.button.basket-button {
     border-radius: 3em;
-    background-color: #85C44D;
+    background-color: #85c44d;
 }
 
 .button a {
