@@ -1,25 +1,23 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt');
-const server = require('../environment')
-const User = require('../models/User')
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const server = require("../environment");
+const User = require("../models/User");
 
 const validateToken = (token) => {
     try {
-        const data = jwt.verify(token, server.SECRET_KEY)
-        return data
+        const data = jwt.verify(token, server.SECRET_KEY);
+        return data;
     } catch (error) {
-        throw new Error('Invalid access token!')
+        throw new Error("Invalid access token!");
     }
-}
+};
 const createAccessToken = (user) => {
-
     const payload = {
         _id: user._id,
         email: user.email,
         role: user.role,
-    }
-    const accessToken = jwt.sign(payload, server.SECRET_KEY)
-
+    };
+    const accessToken = jwt.sign(payload, server.SECRET_KEY);
 
     return {
         email: user.email,
@@ -27,67 +25,79 @@ const createAccessToken = (user) => {
         role: user.role,
         accessToken,
     };
+};
 
-}
 const register = async (email, password) => {
-    const existingEmail = await User.findOne({ email })
-
+    const existingEmail = await User.findOne({ email });
 
     if (existingEmail) {
-        const error = new Error('Email already exists!');
+        const error = new Error("Email already exists!");
         error.status = 409;
         throw error;
     }
 
-    const user = await User.create({ email, password })
-    return createAccessToken(user)
-}
-
-
-
+    const user = await User.create({ email, password });
+    return createAccessToken(user);
+};
 const login = async (email, password) => {
     const user = await User.findOne({ email });
     if (!user) {
-        const error = new Error('Invalid email or password!');
+        const error = new Error("Invalid email or password!");
         error.status = 409;
         throw error;
     }
 
-    const isUser = await bcrypt.compare(password, user.password)
+    const isUser = await bcrypt.compare(password, user.password);
 
     if (isUser) {
-        return createAccessToken(user)
+        return createAccessToken(user);
     } else {
-        const error = new Error('Invalid email or password!');
+        const error = new Error("Invalid email or password!");
         error.status = 409;
         throw error;
     }
-}
+};
 
 const updateUserProducts = async (id, productId) => {
     try {
         const user = await User.findById(id);
-        let productsArr = user.products
-        productsArr.push(productId)
-        await User.findByIdAndUpdate(id, { products: productsArr })
+        let productsArr = user.products;
+        productsArr.push(productId);
+        await User.findByIdAndUpdate(id, { products: productsArr });
     } catch (error) {
-        throw new Error(error)
+        throw new Error(error);
     }
-}
+};
 
-const updateUser = async (id,data) =>{
+const getUser = async (id) => {
+    return await User.findById(id);
+};
 
-     const updatedUser = await User.findByIdAndUpdate(id,{
-        username : data.username,
-        email : data.email,
-    },{
-        new:true
-    })
-   return updatedUser
-}
+const updateUser = async (id, data) => {
+    const user = {
+        email: data.email,
+        username: data.username,
+        address: data.address,
+        city: data.city,
+        country: data.country,
+        postalCode: data.postalCode,
+        phone: data.phone,
+    };
+
+    const updatedUser = await User.findByIdAndUpdate(
+        id,
+        {
+            user,
+        },
+        {
+            new: true,
+        }
+    );
+    return updatedUser;
+};
 const logout = (token) => {
-    blacklist.add(token)
-}
+    blacklist.add(token);
+};
 module.exports = {
     login,
     register,
@@ -95,5 +105,6 @@ module.exports = {
     validateToken,
     updateUserProducts,
     updateUser,
+    getUser,
     logout,
-}
+};
