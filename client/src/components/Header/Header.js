@@ -26,11 +26,9 @@ import { ProfileButton } from "./components/ProfileButton";
 const Header = () => {
     const { isAuthenticated } = useContext(AuthContext);
     const { onSetProducts } = useContext(ProductContext);
-    const navigate = useNavigate();
     const productService = productServiceFactory(getSession()?.accessToken);
 
     const onProductSearchSubmit = async (values) => {
-        // console.log(values)
         const result = await productService.getAll();
         const filteredProducts = result.filter((product) =>
             product.title.toLowerCase().includes(values.toLowerCase())

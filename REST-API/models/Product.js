@@ -1,4 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
+const mongoosePaginate = require('mongoose-paginate');
 
 const URL_PATTERN = /^https?:\/\/.+$/i;
 
@@ -15,19 +16,22 @@ const productSchema = new Schema(
             minlength: [3, "Brand must be at least 3 characters long"],
         },
         category: {
-            required: true,
+            required: false,
             type: String,
-            enum: [
-                "Drill machines",
-                "Electrical screwdrivers",
-                "Rechargable kits",
-                "Jig saws",
-                "Grinders",
-                "Hand tools",
-            ],
-            default: "",
+            enum: {
+                values: [
+                    "Drill machines",
+                    "Electrical screwdrivers",
+                    "Rechargeable kits",
+                    "Jig saws",
+                    "Grinders",
+                    "Hand tools",
+                ],
+                message: 'Invalid category',
+            },
+            default: null,
         },
-        weight: {
+        weigth: {
             type: Number,
             required: true,
             min: [1, "Weigth must be at least 1kg!"],
@@ -61,6 +65,8 @@ const productSchema = new Schema(
     },
     { timestamps: { createdAt: "created_at" } }
 );
+
+productSchema.plugin(mongoosePaginate)
 
 const Product = model("Product", productSchema);
 

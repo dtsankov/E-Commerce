@@ -103,7 +103,7 @@ const EditProduct = () => {
                     </Form.Group>
 
                     <Form.Group controlId="weigth">
-                        <Form.Label>Weight:</Form.Label>
+                        <Form.Label>Weigth:</Form.Label>
                         <Form.Control
                             type="text"
                             value={values.weigth}

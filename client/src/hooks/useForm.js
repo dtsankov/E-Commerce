@@ -98,10 +98,10 @@ export const useForm = (initialValues, initialErrors, onSubmitHandler) => {
     };
 
     const validateWeightHandler = (e) => {
-        if (values.weight.length === 0) {
+        if (values.weigth.length === 0) {
             setErrors((state) => ({
                 ...state,
-                [e.target.name]: "Weight is required",
+                [e.target.name]: "Weigth is required",
             }));
             return false;
         }

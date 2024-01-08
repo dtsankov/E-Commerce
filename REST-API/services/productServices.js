@@ -39,9 +39,9 @@ async function deleteProduct(id) {
     await Product.findByIdAndDelete(id)
 }
 
-async function getMostRated() {
-    const Products = await Product.find({}).sort({ created_at: -1 }).limit(3);
-    return Products
+async function getMostRecent() {
+    return await Product.find({}).sort({ created_at: -1 }).limit(6);
+    
 }
 
 async function getByOwner(id) {
@@ -80,7 +80,7 @@ module.exports = {
     getProductById,
     updateProduct,
     deleteProduct,
-    getMostRated,
+    getMostRecent,
     getByOwner,
     addComment,
     getProductComments

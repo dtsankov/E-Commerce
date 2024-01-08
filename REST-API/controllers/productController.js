@@ -1,5 +1,5 @@
 const {
-  getMostRated,
+  getMostRecent,
   getProductById,
   updateProduct,
   deleteProduct,
@@ -29,13 +29,31 @@ productController.post("/create", async (req, res) => {
 
 //get All Products
 productController.get("/", async (req, res) => {
+  try {
+
+  const page = req.query.page;
+  const pageSize = req.query.pageSize
+
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = page * pageSize;
+
   const products = await getAllProducts();
-  res.status(200).json(products);
+
+  const paginatedProducts = products.slice(startIndex, endIndex);
+  
+  const totalPages = Math.ceil(products.length / pageSize);
+
+  res.status(200).json({ products: paginatedProducts, totalPages });
+    
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+  
 });
 
 //Get most rated products
 productController.get("/most-recent", async (req, res) => {
-  const product = await getMostRated();
+  const product = await getMostRecent();
   res.status(200).json(product);
 });
 
@@ -64,10 +82,11 @@ productController.put("/edit/:id", async (req, res) => {
         .status(403)
         .json({ message: "You cannot edit this product" });
     }
+    console.log(req.body, req.params.id);
     const result = await updateProduct(req.params.id, req.body);
     res.status(200).json(result);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json( `The problem is here`, err.message );
   }
 });
 
@@ -78,7 +97,7 @@ productController.put('/add-comment/:id', async (req, res) => {
     const result = await addComment(req.params.id, req.body);
     res.status(200).json(result);
   } catch (error) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json(error.message);
   }
 })
 

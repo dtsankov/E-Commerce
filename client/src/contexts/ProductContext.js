@@ -12,6 +12,8 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [cart, setCart] = useState(getSession()?.cart || []);
     const productService = productServiceFactory(getSession()?.accessToken); //auth.accessToken
 
@@ -78,6 +80,10 @@ export const ProductProvider = ({ children }) => {
         onSetProducts,
         cart,
         onAddProductToCart,
+        setCurrentPage,
+        setTotalPages,
+        currentPage,
+        totalPages
     };
     return (
         <ProductContext.Provider value={productContextValue}>

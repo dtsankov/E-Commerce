@@ -19,10 +19,9 @@ export const LatestProducts = () => {
     const [latestProducts, setLatestProducts] = useState([]);
 
     useEffect(() => {
-        // Fetch the latest 3 products or adjust as needed
-        productService.getAll()
+        productService.getLatest()
           .then((products) => {
-            setLatestProducts(products.slice(0,6));
+            setLatestProducts(products);
           })
           .catch((error) => {
             console.error('Error fetching latest products:', error);

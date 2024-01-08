@@ -8,7 +8,7 @@
 }
 
 .product-img-section {
-    max-width: 48em;
+    min-width: 53em;
     min-height: 55em;
     padding: 2em;
     margin: 2em;
@@ -17,6 +17,7 @@
 
 .details-img {
     border-radius: 1em;
+    padding-top: 2em;
 }
 
 .info-section {

@@ -4,20 +4,23 @@ import { productServiceFactory } from "../services/productService";
 import { getSession } from "../session/session";
 
 const DataProvider = ({ children }) => {
-    const { onSetProducts } = useContext(ProductContext);
+    const { onSetProducts,setTotalPages,currentPage } = useContext(ProductContext);
 
     useEffect(() => {
         const productService = productServiceFactory(getSession()?.accessToken);
 
-        productService
-            .getAll()
-            .then((result) => {
-                onSetProducts(result);
-            })
-            .catch((error) => {
-                console.error("Error fetching products:", error);
-            });
-    }, []);
+        const fetchData = async () => {
+            try {
+              const result = await productService.getAll(currentPage);
+              onSetProducts(result.products);
+              setTotalPages(result.totalPages);
+            } catch (error) {
+              console.error("Error fetching products:", error);
+            }
+          };
+      
+          fetchData();
+        }, [currentPage]);
 
     return <>{children}</>;
 };
