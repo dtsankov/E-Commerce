@@ -62,7 +62,7 @@ export const useForm = (initialValues, initialErrors, onSubmitHandler) => {
         setErrors((state) => ({ ...state, [e.target.name]: "" }));
     };
 
-    //Create Validations
+    //Create / Edit Validations
     const validateTitleHandler = (e) => {
         if (values.title === "") {
             setErrors((state) => ({
