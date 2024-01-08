@@ -64,7 +64,7 @@ export const useForm = (initialValues, initialErrors, onSubmitHandler) => {
 
     //Create / Edit Validations
     const validateTitleHandler = (e) => {
-        if (values.title === "") {
+        if (values.title.length === 0) {
             setErrors((state) => ({
                 ...state,
                 [e.target.name]: "Title is required",
@@ -109,7 +109,7 @@ export const useForm = (initialValues, initialErrors, onSubmitHandler) => {
     };
 
     const validatePriceHandler = (e) => {
-        if (values.price.length === 0) {
+        if (values.price === "") {
             setErrors((state) => ({
                 ...state,
                 [e.target.name]: "Price is required",
