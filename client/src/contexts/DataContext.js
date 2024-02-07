@@ -9,18 +9,18 @@ const DataProvider = ({ children }) => {
     useEffect(() => {
         const productService = productServiceFactory(getSession()?.accessToken);
 
-        const fetchData = async () => {
-            try {
-              const result = await productService.getAll(currentPage);
-              onSetProducts(result.products);
-              setTotalPages(result.totalPages);
-            } catch (error) {
-              console.error("Error fetching products:", error);
-            }
-          };
-      
-          fetchData();
-        }, [currentPage]);
+            const fetchData = async () => {
+      try {
+        const result = await productService.getAll(currentPage);
+        onSetProducts(result.products);
+        setTotalPages(result.totalPages);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
 
     return <>{children}</>;
 };

@@ -1,9 +1,10 @@
 //React related imports
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProductContext } from "../../contexts/ProductContext";
+import { useShoppingCart } from "../../contexts/ShoppingCartContext"
 import { productServiceFactory } from "../../services/productService";
 import { getSession } from "../../session/session";
 
@@ -14,6 +15,7 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../resources/images/logo.png";
+import { Button } from "react-bootstrap"
 
 //Components imports
 
@@ -26,14 +28,13 @@ import { ProfileButton } from "./components/ProfileButton";
 const Header = () => {
     const { isAuthenticated } = useContext(AuthContext);
     const { onSetProducts } = useContext(ProductContext);
+    const { openCart, cartQuantity } = useShoppingCart()
     const productService = productServiceFactory(getSession()?.accessToken);
 
-    const onProductSearchSubmit = async (values) => {
-        const result = await productService.getAll();
-        const filteredProducts = result.filter((product) =>
-            product.title.toLowerCase().includes(values.toLowerCase())
-        );
-        onSetProducts((state) => [...filteredProducts]);
+    const onProductSearchSubmit = async (search) => {
+        const result = await productService.getSearched(search);
+        onSetProducts((state) => [...result]);
+        
     };
 
     return (
@@ -99,12 +100,9 @@ const Header = () => {
                             </div>
                         </div>
 
-                        <div id="cart" className="component-wrapper">
+                        {cartQuantity >= 0 &&(<div id="cart" className="component-wrapper">
                             <div className="cart-container">
-                                <Link
-                                    to="shopping-cart"
-                                    className="login-wrapper"
-                                >
+                                <button className="login-wrapper" onClick={openCart}>
                                     <div>
                                         <p>
                                             <FontAwesomeIcon
@@ -116,9 +114,56 @@ const Header = () => {
                                             Shopping Cart
                                         </p>
                                     </div>
-                                </Link>
+                                </button>
+                            </div>
+                              <div
+                            className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                            style={{
+                                color: "white",
+                                width: "1.5rem",
+                                height: "1.5rem",
+                                position: "absolute",
+                                bottom: "6.3em",
+                                right: "1.8em",
+                                transform: "translate(25%, 25%)",
+                            }}
+                            >
+                            {cartQuantity}
                             </div>
                         </div>
+                        )}
+
+                        {/* {cartQuantity >= 0 && (
+                        <Button
+                            onClick={openCart}
+                            style={{ width: "3rem", height: "3rem", position: "relative" }}
+                            variant="outline-primary"
+                            className="rounded-circle"
+                        >
+                            <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512"
+                            fill="currentColor"
+                            >
+                            <path d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" />
+                            </svg>
+
+                            <div
+                            className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
+                            style={{
+                                color: "white",
+                                width: "1.5rem",
+                                height: "1.5rem",
+                                position: "absolute",
+                                bottom: 0,
+                                right: 0,
+                                transform: "translate(25%, 25%)",
+                            }}
+                            >
+                            {cartQuantity}
+                            </div>
+                        </Button>
+                        )} */}
                     </div>
                 </section>
             </div>

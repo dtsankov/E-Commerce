@@ -47,17 +47,31 @@
     border: none;
 }
 
+.cart-button{
+    border-radius: 3em;
+    background-color: #85c44d;
+    border: none;
+}
+
+.cart-button:hover{
+    border-radius: 3em;
+    background-color: white;
+    color: #85c44d;
+    border: 1px solid #85c44d;
+    transition: all 0.4s ease-in-out;
+}
+
 .button.details-button {
     border-radius: 3em;
     border: 1px solid #111041;
     background-color: white;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .button.details-button:hover,
 .button.details-button:hover a {
-    background-color: #111041;
     color: white;
+    background-color: #111041;
+    transition: 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
 .button.basket-button {

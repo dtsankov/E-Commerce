@@ -16,7 +16,7 @@ const CreateProduct = () => {
         Title: "title",
         Brand: "brand",
         Category: "category",
-        Weight: "weight",
+        Weigth: "weigth",
         Price: "price",
         ImageUrl: "imageUrl",
         Description: "description",
@@ -26,7 +26,7 @@ const CreateProduct = () => {
         TitleError: "title",
         BrandError: "brand",
         CategoryError: "category",
-        WeightError: "weight",
+        WeigthError: "weigth",
         PriceError: "price",
         ImageUrlError: "imageUrl",
         DescriptionError: "description",
@@ -50,7 +50,7 @@ const CreateProduct = () => {
             [CreateFormKeys.Title]: "",
             [CreateFormKeys.Brand]: "",
             [CreateFormKeys.Category]: "",
-            [CreateFormKeys.Weight]: "",
+            [CreateFormKeys.Weigth]: "",
             [CreateFormKeys.Price]: "",
             [CreateFormKeys.ImageUrl]: "",
             [CreateFormKeys.Description]: "",
@@ -59,7 +59,7 @@ const CreateProduct = () => {
             [CreateFormErrors.Title]: "",
             [CreateFormErrors.Brand]: "",
             [CreateFormErrors.Category]: "",
-            [CreateFormErrors.Weight]: "",
+            [CreateFormErrors.Weigth]: "",
             [CreateFormErrors.Price]: "",
             [CreateFormErrors.ImageUrl]: "",
             [CreateFormErrors.Description]: "",
@@ -170,28 +170,28 @@ const CreateProduct = () => {
 
                     <Form.Group
                         className={`mb-3 ${
-                            errors[CreateFormErrors.WeightError]
+                            errors[CreateFormErrors.WeigthError]
                                 ? "has-error"
                                 : ""
                         }`}
                         controlId="weight"
                     >
-                        <Form.Label>Weight:</Form.Label>
+                        <Form.Label>Weigth:</Form.Label>
                         <Form.Control
                             type="text"
-                            name={CreateFormKeys.Weight}
-                            value={values[CreateFormKeys.Weight]}
+                            name={CreateFormKeys.Weigth}
+                            value={values[CreateFormKeys.Weigth]}
                             onChange={changeHandler}
                             onBlur={validateWeightHandler}
                             placeholder="1-100kg"
                             className={
-                                errors[CreateFormErrors.WeightError]
+                                errors[CreateFormErrors.WeigthError]
                                     ? "is-invalid"
                                     : ""
                             }
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors[CreateFormErrors.WeightError]}
+                            {errors[CreateFormErrors.WeigthError]}
                         </Form.Control.Feedback>
                     </Form.Group>
 

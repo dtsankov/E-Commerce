@@ -28,6 +28,14 @@ export const productServiceFactory = (token) => {
             throw new Error(error.message);
         }
     };
+
+    const getSearched = async (search) =>{
+        try {
+            return await request.get(`${baseUrl}/search?search=${search}`)
+        } catch (error) {
+            
+        }
+    }
     
     const getOne = async (productId) => {
         const result = await request.get(`${baseUrl}/${productId}`);
@@ -50,6 +58,7 @@ export const productServiceFactory = (token) => {
     return {
         getAll,
         getLatest,
+        getSearched,
         getOne,
         create,
         edit,

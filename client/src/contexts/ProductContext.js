@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createContext } from "react";
 import { toast } from "react-toastify";
 
 import { productServiceFactory } from "../services/productService";
-import { getSession, setCartSession } from "../session/session";
+import { getSession } from "../session/session";
 
 export const ProductContext = createContext();
 
@@ -14,10 +14,8 @@ export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [cart, setCart] = useState(getSession()?.cart || []);
     const productService = productServiceFactory(getSession()?.accessToken); //auth.accessToken
 
-    useEffect(() => {}, [cart]);
 
     const onCreateProductSubmit = async (data) => {
         const { userId, ...productData } = data;
@@ -43,31 +41,6 @@ export const ProductProvider = ({ children }) => {
         navigate(`/catalog/${values._id}`);
     };
 
-    const onAddProductToCart = async (productId) => {
-        const productInCart = cart.find((x) => x.product._id === productId);
-
-        const currentProduct = products.find((x) => x._id === productId);
-
-        if (productInCart) {
-            setCart((state) =>
-                state.map((x) =>
-                    x.product._id === productId
-                        ? { ...x, quantity: x.quantity + 1 }
-                        : x
-                )
-            );
-        } else {
-            setCart((state) => [
-                ...state,
-                {
-                    product: currentProduct,
-                    quantity: productInCart ? productInCart.quantity + 1 : 1,
-                },
-            ]);
-        }
-        setCartSession(cart);
-        toast.success("Product added successfully to cart.");
-    };
 
     const onSetProducts = (value) => {
         setProducts(value);
@@ -78,8 +51,6 @@ export const ProductProvider = ({ children }) => {
         onProductEditSubmit,
         products,
         onSetProducts,
-        cart,
-        onAddProductToCart,
         setCurrentPage,
         setTotalPages,
         currentPage,

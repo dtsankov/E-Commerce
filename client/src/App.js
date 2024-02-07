@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProductProvider } from './contexts/ProductContext';
+import { ShoppingCartProvider } from './contexts/ShoppingCartContext';
+
 
 
 
@@ -19,13 +21,15 @@ function App() {
   return (
   <AuthProvider> 
       <ProductProvider>
-        <DataProvider>
-          <Header/>
-          <main className="main-section">
-          <Routers />
-          </main>
-          <Footer />
-        </DataProvider>
+        <ShoppingCartProvider>
+          <DataProvider>
+            <Header/>
+            <main className="main-section">
+            <Routers />
+            </main>
+            <Footer />
+          </DataProvider>
+        </ShoppingCartProvider>
       </ProductProvider> 
   </AuthProvider >
 );

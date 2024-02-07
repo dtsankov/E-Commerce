@@ -51,9 +51,14 @@ productController.get("/", async (req, res) => {
   
 });
 
-//Get most rated products
+//Get most recent products
 productController.get("/most-recent", async (req, res) => {
   const product = await getMostRecent();
+  res.status(200).json(product);
+});
+
+productController.get("/search", async (req, res) => {
+  const product = await getAllProducts(req.query.search);
   res.status(200).json(product);
 });
 

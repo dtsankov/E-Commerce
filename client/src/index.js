@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import "bootstrap/dist/css/bootstrap.css";     
+import 'animate.css';
 import './index.css';
 
 import { ToastContainer } from "react-toastify";

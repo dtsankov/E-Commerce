@@ -23,6 +23,11 @@
     right: 2%;
 }
 
+.container-wrapper-top-right p {
+    margin-bottom: 0;
+    padding-bottom: 1em;
+}
+
 
 .container-wrapper-top-right .component-wrapper {
     display: flex;
@@ -39,24 +44,6 @@
 .component-wrapper:hover p {
     color: white;
 }
-
-
-/* .container-wrapper-top-right .component-wrapper #heart:hover {
-    background-color: #f63e6e;
-} */
-/* .component-wrapper .heart:hover ,
-.heart:hover p {
-    color: white;
-} */
-
-
-/* .container-wrapper-top-right .component-wrapper #cart:hover {
-    background-color: #f18e18;
-} */
-/* .container-wrapper-top-right .component-wrapper .cart:hover,
-.cart:hover p {
-    color: white;
-} */
 
 .header-logo{
     position: absolute;
@@ -108,6 +95,12 @@
 .login-wrapper {
     text-decoration: none;
     color: #111041;
+}
+
+button.login-wrapper{
+  text-decoration: none;
+  border: none;
+  background: whitesmoke;
 }
 
 .login-wrapper:visited {

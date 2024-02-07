@@ -16,13 +16,15 @@ export const logoutSession = () => {
     localStorage.removeItem("token");
 };
 
-export const setCartSession = (cart) => {
-    sessionStorage.setItem("Cart", JSON.stringify(cart));
-    localStorage.setItem("Cart", JSON.stringify(cart));
-};
 
-export const getCartSession = () => {
-    const cart = sessionStorage.getItem("Cart");
-    const local = localStorage.getItem("Cart");
-    return cart ? JSON.parse(cart) : local ? JSON.parse(local) : [];
-};
+
+// export const setCartSession = (cart) => {
+//     sessionStorage.setItem("Cart", JSON.stringify(cart));
+//     localStorage.setItem("Cart", JSON.stringify(cart));
+// };
+
+// export const getCartSession = () => {
+//     const cart = sessionStorage.getItem("Cart");
+//     const local = localStorage.getItem("Cart");
+//     return cart ? JSON.parse(cart) : local ? JSON.parse(local) : [];
+// };

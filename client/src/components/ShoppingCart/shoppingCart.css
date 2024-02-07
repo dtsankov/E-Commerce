@@ -1,0 +1,11 @@
+.cart-item{
+    padding: 3em 0;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.cart-item:hover{
+     transition: all 0.3s ease;
+     scale: 1.05;
+     background-color: whitesmoke;
+}

@@ -10,11 +10,14 @@ async function addProduct(product, id) {
         throw new Error(error)
     }
 }
-async function getAllProducts() {
-
-    return await Product.find({})
-
+async function getAllProducts(search) {
+    let products = await Product.find({});
     
+    if (search) {
+        products = products.filter(x => x.title.toLowerCase().includes(search.toLowerCase()));
+    }
+
+    return products;
 } 
    
 

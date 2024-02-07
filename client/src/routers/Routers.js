@@ -23,6 +23,9 @@ import JigSaws from '../components/ProductPages/JigSaws'
 import Grinders from '../components/ProductPages/Grinders'
 import HandTools from '../components/ProductPages/HandTools'
 
+import {ShoppingCart} from '../components/ShoppingCart/ShoppingCart'
+
+
 
 
 import {ProtectedRoute, ProtectedAuthRoute} from './ProtectedRoute';
@@ -41,6 +44,9 @@ const {
             <Route path='/' element={<Home products={products} />} />
             <Route path='/catalog/:productId' element={<ProductDetails />} />
             <Route path='/catalog/:productId/edit' element={<EditProduct />} />
+            <Route path='shopping-cart' element={<ShoppingCart />} />
+
+
          
         
 
