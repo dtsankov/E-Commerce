@@ -38,9 +38,12 @@ export const productServiceFactory = (token) => {
     }
     
     const getOne = async (productId) => {
-        const result = await request.get(`${baseUrl}/${productId}`);
-    
-        return result;
+        try {
+            const result = await request.get(`${baseUrl}/${productId}`);
+            return result;
+        } catch (error) {
+            throw new Error(error.message);
+        }
     };
     
     const create = async (productData) => {

@@ -1,3 +1,12 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+    console.log('Running in development environment');
+} else if (process.env.NODE_ENV === 'development') {
+    // Code specific to the development environment
+    console.log('Running in production environment')}
+
+ 
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('./middlewares/cors');
@@ -7,6 +16,11 @@ const cookieParser = require('cookie-parser');
 const { authMiddleware } = require('./middlewares/auth');
 const cookieSecret = process.env.COOKIESECRET || 'SoftUni';
 const connectionString = 'mongodb://127.0.0.1:27017/a-zConstructionDb';
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+
+
+
 
 start();
 

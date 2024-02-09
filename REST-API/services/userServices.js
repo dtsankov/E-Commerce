@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const server = require("../environment");
+const secretKey = process.env.SECRET_KEY
 const User = require("../models/User");
 
 const validateToken = (token) => {
     try {
-        const data = jwt.verify(token, server.SECRET_KEY);
+        const data = jwt.verify(token, secretKey);
         return data;
     } catch (error) {
         throw new Error("Invalid access token!");
@@ -17,7 +17,7 @@ const createAccessToken = (user) => {
         email: user.email,
         role: user.role,
     };
-    const accessToken = jwt.sign(payload, server.SECRET_KEY);
+    const accessToken = jwt.sign(payload, secretKey);
 
     return {
         email: user.email,

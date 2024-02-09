@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react"
 import { ShoppingCart } from "../components/ShoppingCart/ShoppingCart"
 import { useLocalStorage } from "../hooks/useLocalStorage"
+import {productServiceFactory} from "../services/productService"
+import { getSession } from "../session/session"
 
 const ShoppingCartContext = createContext()
 
@@ -11,11 +13,22 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false)
   const [cartItems, setCartItems] = useLocalStorage("shopping-cart",[])
-
+  const productService = productServiceFactory(getSession()?.accessToken);
+  
   const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity,0)
 
   const openCart = () => setIsOpen(true)
   const closeCart = () => setIsOpen(false)
+
+  async function cartItem(id){
+    try {
+      const result = await productService.getOne(id);
+      return result;  
+    } catch (error) {
+      console.error('Error fetching product:', error);
+      return null;  
+    }
+  }
 
   function getItemQuantity(id) {
     return cartItems.find(item => item.id === id)?.quantity || 0
@@ -70,6 +83,7 @@ export function ShoppingCartProvider({ children }) {
         closeCart,
         cartItems,
         cartQuantity,
+        cartItem
       }}
     >
       {children}
